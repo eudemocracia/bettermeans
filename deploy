@@ -1,0 +1,13 @@
+echo pushing to heroku...
+git push heroku
+
+echo pushing to github...
+git push origin master
+
+echo migrating db...
+heroku rake db:migrate
+
+echo backing up db after new code...
+heroku pgbackups
+heroku rake backup
+

@@ -1,0 +1,65 @@
+<%= error_messages_for 'member' %>
+<% roles = @project.enterprise? ? Role.find_all_givable(Role::LEVEL_ENTERPRISE) : Role.find_all_givable(Role::LEVEL_PROJECT)
+   members = @project.member_users.find(:all, :include => [:roles, :user]).sort %>
+
+<div class="splitcontentleft">
+<div class="gt-content-box padded">
+<% if members.any? %>
+<table class="gt-table border='0'">
+  <thead>
+    <th><%= l(:label_user) %> / <%= l(:label_group) %></th>
+    <th><%= l(:label_role_plural) %></th>
+    <th style="width:15%"></th>
+  </thead>
+  <tbody>
+  <% members.each do |member| %>
+  <% next if member.new_record? %>
+  <tr id="member-<%= member.id %>" class="<%= cycle 'odd', 'even' %> member">
+  <td class="<%= member.user.class.name.downcase %>"><%= link_to_user member.user %></td>
+  <td class="roles">
+    <span id="member-<%= member.id %>-roles"><%=h member.roles.sort.collect(&:to_s).join(', ') %></span>
+    <% if authorize_for('members', 'edit') %>
+      <% remote_form_for(:member, member, :url => {:controller => 'members', :action => 'edit', :id => member},
+                                          :method => :post,
+                                          :html => { :id => "member-#{member.id}-roles-form", :style => 'display:none;' }) do |f| %>
+        <p><% roles.each do |role| %>
+        <label><%= check_box_tag 'member[role_ids][]', role.id, member.roles.include?(role),
+                                                       :disabled => member.member_roles.detect {|mr| mr.role_id == role.id && !mr.inherited_from.nil?} %> <%=h role %></label><br />
+        <% end %></p>
+        <%= hidden_field_tag 'member[role_ids][]', '' %>
+        <%= submit_tag l(:button_change), :disable_with => l(:button_working) %>
+        <p class="gt-cancel" style="float:none;">
+        <%= link_to_function l(:button_cancel), "$('#member-#{member.id}-roles').show(); $('#member-#{member.id}-roles-form').hide(); return false;" %></p>
+      <% end %>
+    <% end %>
+  </td>
+  <td class="buttons">
+      <%= link_to_function l(:button_edit), "$('#member-#{member.id}-roles').hide(); $('#member-#{member.id}-roles-form').show(); return false;", :class => 'icon icon-edit' %>
+      <%= link_to_remote(l(:button_delete), { :url => {:controller => 'members', :action => 'destroy', :id => member},
+                                              :confirm => "Are you sure you want to remove #{member.user.name}?",
+                                              :method => :post
+                                            }, :title => l(:button_delete),
+                                               :class => 'icon icon-del') if member.deletable? %>
+  </td>
+  </tr>
+  </tbody>
+<% end; reset_cycle %>
+</table>
+<% else %>
+<p class="nodata"><%= l(:label_no_data) %></p>
+<% end %>
+</div>
+</div>
+
+<div class="splitcontentright">
+  <% if User.current.allowed_to?(:send_invitations, @project) %>
+  <div class="gt-sidebar-nav gt-sidebar-nav-blue">
+    <ul>
+    <li style="text-align:center;">
+      <%= link_to l(:label_invitation_new), new_project_invitation_url(@project) %>
+    </li>
+    </ul>
+  </div>
+  <% end %>
+
+</div>

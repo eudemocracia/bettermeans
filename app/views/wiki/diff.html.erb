@@ -1,0 +1,25 @@
+
+<h2><%= @page.pretty_title %></h2>
+
+<p>
+<%= l(:label_version) %> <%= link_to @diff.content_from.version, :action => 'index', :page => @page.title, :version => @diff.content_from.version %>
+<em>(<%= @diff.content_from.author ? @diff.content_from.author.name : "anonyme" %>, <%= format_time(@diff.content_from.updated_at) %>)</em>
+&#8594;
+<%= l(:label_version) %> <%= link_to @diff.content_to.version, :action => 'index', :page => @page.title, :version => @diff.content_to.version %>/<%= @page.content.version %>
+<em>(<%= @diff.content_to.author ? @diff.content_to.author.name : "anonyme" %>, <%= format_time(@diff.content_to.updated_at) %>)</em>
+</p>
+
+<hr />
+
+<% content_for :sidebar do %>
+  <div class="gt-sidebar-nav gt-sidebar-nav-gray">
+    <ul>
+      <li>
+        <%= link_to(l(:label_history), {:action => 'history', :page => @page.title}, :class => 'icon icon-history') %>
+      </li>
+    </ul>
+  </div>
+<% end %>
+
+
+<%= html_diff(@diff) %>

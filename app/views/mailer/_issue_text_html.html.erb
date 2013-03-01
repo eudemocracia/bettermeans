@@ -1,0 +1,13 @@
+<%= link_to "#{issue.tracker.name} ##{issue.id}: #{issue.subject}", issue_url %>
+
+<ul>
+<li><%=l(:field_author)%>: <%= issue.author %></li>
+<li><%=l(:field_status)%>: <%= issue.status %></li>
+<li><%=l(:field_assigned_to)%>: <%= issue.assigned_to %></li>
+</ul>
+
+<%= textilizable(issue, :description, :only_path => false) %>
+
+-----<br>
+<%= l(:text_issue_edit_footer) %>
+<br>

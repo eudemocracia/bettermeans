@@ -1,0 +1,54 @@
+<span id="motion_votes">
+  <div id="your_vote">
+    <% user_vote = motion.motion_votes.belong_to_user(User.current.id).first %>
+    <% if user_vote.nil? %>
+    <%= l :label_you_havent_voted %>
+    <% else %>
+    <%= l :label_you_voted, :action => user_vote.action_description %>  <%= distance_of_time_in_words(Time.now,user_vote.updated_at) %> ago
+    <% end %>
+  </div>
+<% if motion.motion_type == Motion::TYPE_SHARE && User.current.shares.for_project(motion.project_id).empty? %>
+  <%= l(:text_you_dont_have_shares_to_vote) %>
+  <span class="clear"></span>
+<% elsif motion.motion_type == Motion::TYPE_SHARE && motion.active? %>
+<br>
+  <%= link_to_remote button(l(:label_agree),:agree) , :url => {:controller => :motion_votes, :action => :create, :points => 1, :motion_id => motion} if user_vote.nil? || user_vote.points < 1%>
+  <%= link_to_remote button(l(:label_neutral),:neutral) , :url => {:controller => :motion_votes, :action => :create, :points => 0, :motion_id => motion} if user_vote.nil? || user_vote.points != 0%>
+  <%= link_to_remote button(l(:label_disagree),:against) , :url => {:controller => :motion_votes, :action => :create, :points => -1, :motion_id => motion} if user_vote.nil? || user_vote.points > -1%>
+  <span class="clear"></span>
+<% elsif motion.active? %>
+<br>
+  <%= link_to_remote button(l(:label_agree),:agree) , :url => {:controller => :motion_votes, :action => :create, :points => 1, :motion_id => motion} if user_vote.nil? || user_vote.points != 1%>
+  <%= link_to_remote button(l(:label_neutral),:neutral) , :url => {:controller => :motion_votes, :action => :create, :points => 0, :motion_id => motion} if user_vote.nil? || user_vote.points != 0%>
+  <%= link_to_remote button(l(:label_disagree),:against) , :url => {:controller => :motion_votes, :action => :create, :points => -1, :motion_id => motion} if user_vote.nil? || user_vote.points != -1%>
+  <%= link_to_remote button(l(:label_block),:block) , :url => {:controller => :motion_votes, :action => :create, :points => -9999, :motion_id => motion} if user_vote.nil? || user_vote.points != -9999%>
+  <span class="clear"></span>
+<% end %>
+<br>
+<br>
+
+<div id="motion_votes_tally">
+  <h3><%= l :label_tally %></h3>
+  <% if user_vote.nil? && motion.active? %>
+    <%= l :text_tally_hidden_until_you_vote %>
+  <% else %>
+    <div class="gt-content-box">
+      <%= tally_table(motion) %>
+    </div>
+  <% end %>
+</div>
+<br>
+<br>
+
+<div id="motion_votes_history">
+  <h3><%= l :label_history %></h3>
+  <% if user_vote.nil? %>
+    <%= l :text_history_hidden_until_you_vote %>
+  <% else %>
+    <% motion.motion_votes.history.each do |mv| %>
+    <%= !user_vote.isbinding && mv.isbinding ? l(:label_hidden) : link_to_user(mv.user) %>: <b><%= mv.action_description %></b> <%= distance_of_time_in_words(Time.now,mv.updated_at) %> ago <%= "(#{l :label_non_binding})" if !mv.isbinding %><br>
+    <% end %>
+  <% end %>
+</div>
+
+</span>

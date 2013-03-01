@@ -1,0 +1,14 @@
+User-agent: *
+Disallow: /boards
+Disallow: /issues
+Disallow: /activity
+Disallow: /projects
+Disallow: /news
+<% @projects.each do |p| -%>
+Disallow: /projects/<%= p.to_param %>/issues
+Disallow: /projects/<%= p.to_param %>/activity
+Disallow: /projects/<%= p.to_param %>
+Disallow: /projects/<%= p.identifier %>/issues
+Disallow: /projects/<%= p.identifier %>/activity
+Disallow: /projects/<%= p.identifier %>
+<% end -%>

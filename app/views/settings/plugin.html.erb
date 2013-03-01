@@ -1,0 +1,12 @@
+<h2><%= l(:label_settings) %>: <%=h @plugin.name %></h2>
+
+<div id="settings">
+<% form_tag({:action => 'plugin'}) do %>
+<div class="gt-content-box tabular">
+<%= render :partial => @partial, :locals => {:settings => @settings}%>
+</div>
+<div class="gt-table-buttons">
+<%= submit_tag l(:button_apply), :disable_with => l(:button_working) %>
+</div>
+<% end %>
+</div>

@@ -1,0 +1,110 @@
+   <% activities_by_item = ActivityStream.fetch(user_id,project_id, with_subprojects, limit, max_created_at) %>
+    <%link = link_to_remote "refresh", {
+                                :url => {:controller => :activity_streams,
+                                        :action => :index,
+                                        :user_id => user_id,
+                                        :project_id => project_id,
+                                        :with_subprojects => with_subprojects,
+                                        :limit => limit,
+                                        :max_created_at => nil,
+                                        :refresh => true
+                                        },
+                                :method => :get, :class => "right"
+                                } unless (defined? show_refresh) && !show_refresh %>
+<span id="activity_stream_list">
+ <table border="0" class="gt-table gt-user-table gt-activity-table">
+    <tbody>
+      <% activities_by_item.each_with_index do |asg, count| %>
+        <%= render :partial => 'activity_streams/activity_stream_group', :locals => {:asg => asg[1], :refresh_link => (count == 0 ? link : nil)} %>
+      <% end %>
+    </tbody>
+  </table>
+  <% unless activities_by_item.empty? %>
+  <div id="activity_stream_bottom" class="activity-bottom">
+    <%= link_to_remote "Show more ...", {
+                                :url => {:controller => :activity_streams,
+                                        :action => :index,
+                                        :user_id => user_id,
+                                        :project_id => project_id,
+                                        :with_subprojects => with_subprojects,
+                                        :limit => limit,
+                                        :max_created_at => activities_by_item.last[1].last.created_at
+                                        },
+                                :method => :get
+                                } unless activities_by_item.last.nil? %>
+  </div>
+  <% end %>
+
+<%= content_tag('p', l(:label_no_data), :class => 'nodata') if activities_by_item.empty? %>
+
+<script type="text/javascript">
+
+function prepare_input(object_id){
+  $("#input_comment_" + object_id).show();
+  $("#input_comment_textarea_" + object_id).focus();
+  $("#input_comment_textarea_" + object_id).autogrow();
+  $("#add_comment_trigger_" + object_id).hide();
+
+}
+
+function post_comment(object_id, comment_type){
+  $("#input_comment_" + object_id).hide();
+  $("#add_comment_trigger_" + object_id).show();
+
+    var text = $("#input_comment_textarea_" + object_id).val();
+
+    if ((text == null) || (text.length < 2)){
+      return false;
+    }
+    else
+    {
+      $("#comments_table_" + object_id).append(generate_comment(object_id,text));
+      $("#input_comment_textarea_" + object_id).val('');
+
+      if (comment_type=="issue")
+      {
+        var data = "commit=Create&issue_id=" + object_id + "&comment=" + text;
+
+        var url = url_for({ controller: 'comments',
+                                 action    : 'create'
+                                });
+      }
+      else if (comment_type=="message")
+      {
+        var data = "commit=Submit&reply[content]=" + text;
+        var url = "/boards/guess/topics/" + object_id + "/replies"
+      }
+
+
+      $.ajax({
+         type: "POST",
+         dataType: "json",
+         url: url,
+         data: data,
+         success:   function(html){
+        },
+        timeout: 30000 //30 seconds
+       });
+
+      return false;
+    }
+}
+
+function generate_comment(object_id, text){
+  var html = '<tr>';
+  html = html +  '    <td class="gt-avatar">';
+  html = html +  '      <%= avatar(User.current, :size => "24") %>';
+  html = html +  '      </td>';
+  html = html +  '      <td>';
+  html = html +  '        <span class="author"><%= link_to User.current.name, "user_path", :id => User.current.id %></span>';
+  html = html +  '        <span class="verb">Updated this seconds ago</span>';
+  html = html +  '          <span class="long-words"><p>';
+  html = html +  text;
+  html = html +  '          </p></span>';
+  html = html +  '      </td>';
+  html = html +  '  </tr>';
+  return html;
+}
+
+</script>
+</span>

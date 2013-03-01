@@ -1,0 +1,81 @@
+<%= help_section "project_discussion" %>
+<%= breadcrumb link_to(l(:label_board_plural), {:controller => 'boards', :action => 'index', :project_id => @project}) %>
+
+<div id="add-message" style="display:none;">
+<% if authorize_for('messages', 'new') %>
+<h2><%= link_to h(@board.name), :controller => 'boards', :action => 'show', :project_id => @project, :id => @board %> &#187; <%= l(:label_message_new) %></h2>
+<% form_for :message, @message, :url => {:controller => 'messages', :action => 'new', :board_id => @board}, :html => {:multipart => true, :id => 'message-form'} do |f| %>
+  <%= render :partial => 'messages/form', :locals => {:f => f} %>
+  <div class="gt-table-buttons">
+  <%= submit_tag l(:button_create), :disable_with => l(:button_working) %>
+  <p class="gt-cancel">
+  <%= link_to_remote l(:label_preview),
+                     { :url => { :controller => 'messages', :action => 'preview', :board_id => @board },
+                       :method => 'post',
+                       :update => 'preview',
+                       :with => "$('#message-form').serialize()",
+                       :complete => "$('body').scrollTo('#preview')"
+                     }, :accesskey => accesskey(:preview) %> |
+  <%= link_to l(:button_cancel), "#", :onclick => 'Element.hide("add-message")' %>
+  </p>
+  </div>
+<% end %>
+<div id="preview" class="wiki"></div>
+<% end %>
+</div>
+
+<h2><%=h @board.name %></h2>
+<p class="subtitle"><%=h @board.description %></p>
+
+<% if @topics.any? %>
+<div class="gt-content-box">
+<table class="gt-table">
+  <thead><tr>
+    <th><%= l(:field_subject) %></th>
+    <th><%= l(:field_author) %></th>
+    <%= sort_header_tag('created_at', :caption => l(:field_created_at)) %>
+    <%= sort_header_tag('replies', :caption => l(:label_reply_plural)) %>
+    <%= sort_header_tag('updated_at', :caption => l(:label_message_last)) %>
+  </tr></thead>
+  <tbody>
+  <% @topics.each do |topic| %>
+    <tr class="message <%= cycle 'odd', 'even' %> <%= topic.sticky? ? 'sticky' : '' %> <%= topic.locked? ? 'locked' : '' %>">
+      <td class="subject"><%= link_to h(topic.subject), { :controller => 'messages', :action => 'show', :board_id => @board, :id => topic } %></td>
+      <td class="author"><%= topic.author %></td>
+      <td class="created_at"><%= format_time(topic.created_at) %></td>
+      <td class="replies"><%= topic.replies_count %></td>
+      <td class="last_message">
+        <% if topic.last_reply %>
+        <%= authoring topic.last_reply.created_at, topic.last_reply.author %><br />
+        <%= link_to_message topic.last_reply %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<div class="gt-table-controls gt-table-controls-btm clearfix">
+          <p class="gt-table-pager"><%= pagination_links_full @topic_pages, @topic_count %></p>
+</div>
+</div>
+<% else %>
+<div class="gt-content-box">
+  <p class="nodata"><%= l(:label_no_data) %></p>
+</div>
+<% end %>
+
+<% html_title h(@board.name) %>
+
+<% content_for :actionmenu do %>
+  <ul>
+  <li>
+    <%= link_to_if_authorized l(:label_topic_new),
+                              {:controller => 'messages', :action => 'new', :board_id => @board},
+                              :class => 'icon icon-add',
+                              :onclick => '$("#add-message").show(); $("#message_subject").focus(); return false;' %>
+  </li>
+  <li>
+    <%= watcher_tag(@board, User.current) %>
+  </li>
+  </ul>
+<% end %>

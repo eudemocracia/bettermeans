@@ -1,0 +1,24 @@
+<% selected_tab = params[:tab] ? params[:tab].to_s : tabs.first[:name] %>
+
+<div class="tabs">
+  <ul>
+
+  <% tabs.each do |tab| -%>
+    <% tab[:label_ending] ||=""  %>
+    <li><%= link_to (l(tab[:label])+ tab[:label_ending]), { :tab => tab[:name] },
+                                    :id => "tab-#{tab[:name]}",
+                                    :class => "tab-top #{(tab[:name] != selected_tab ? nil : 'selected')}",
+                                    :onclick => "showTab('#{tab[:name]}'); this.blur(); return false;" %></li>
+  <% end -%>
+  </ul>
+  <div class="tabs-buttons" style="display:none;">
+    <button class="tab-left" onclick="moveTabLeft(this);"></button>
+    <button class="tab-right" onclick="moveTabRight(this);"></button>
+  </div>
+</div>
+
+<% tabs.each do |tab| -%>
+  <%= content_tag('div', render(:partial => tab[:partial], :locals => tab[:locals] ),
+                       :id => "tab-content-#{tab[:name]}",
+                       :class => "tab-content #{(tab[:name] != selected_tab ? 'hidden' : nil)}") %>
+<% end -%>

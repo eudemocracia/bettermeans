@@ -1,0 +1,24 @@
+<div class="gt-content-box">
+<% if issues && issues.any? %>
+<% form_tag({}) do %>
+  <table class="gt-table issues">
+    <tbody>
+    <% for issue in issues %>
+    <tr id="issue-<%= issue.id %>" class="hascontextmenu <%= cycle('odd', 'even') %> <%= issue.css_classes %>">
+      <td class="id">
+      <% unless defined? no_workstream %>
+        <%= link_to(h(issue.project), :controller => 'projects', :action => 'show', :id => issue.project) %>
+      <% end %>
+      </td>
+      <td class="icon icon-<%= issue.tracker.to_s.downcase %> id">
+        <%= link_to "#{issue.id} - " + h(truncate(issue.subject, :length => 120)) ,  {:controller => 'issues', :action => 'show', :id => issue}, :class => "fancyframe" %>
+      </td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
+<% else %>
+  <p class="nodata"><%= l(:label_no_data) %></p>
+<% end %>
+</div>

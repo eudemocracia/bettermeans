@@ -1,0 +1,14 @@
+<% @page_header_name = @parent ? l(:label_subproject_new) : l(:label_project_new) %>
+<% labelled_tabular_form_for :project, @project, :url => { :action => "add" }, :html => { :multipart => true }  do |f| %>
+
+<%= render :partial => 'form', :locals => { :f => f, :include_modules => true } %>
+
+<div class="gt-table-buttons">
+<%= submit_tag l(:button_save), :disable_with => l(:button_working) %>
+</div>
+<%= javascript_tag "$('#project_name').focus();" %>
+<% end %>
+
+<% content_for :sidebar do %>
+<%= help_section("project_new") %>
+<% end %>

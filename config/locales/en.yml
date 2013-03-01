@@ -1,0 +1,1345 @@
+en:
+  date:
+    formats:
+      # Use the strftime parameters for formats.
+      # When no format has been given, it uses default.
+      # You can provide other formats here if you like!
+      default: "%m/%d/%Y"
+      short: "%b %d"
+      long: "%B %d, %Y"
+
+    day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
+    abbr_day_names: [Sun, Mon, Tue, Wed, Thu, Fri, Sat]
+
+    # Don't forget the nil at the beginning; there's no such thing as a 0th month
+    month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
+    abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
+    # Used in date_select and datime_select.
+    order:
+      - :year
+      - :month
+      - :day
+
+  time:
+    formats:
+      default: "%m/%d/%Y %I:%M %p"
+      time: "%I:%M %p"
+      short: "%d %b %H:%M"
+      long: "%B %d, %Y %H:%M"
+    am: "am"
+    pm: "pm"
+
+  datetime:
+    distance_in_words:
+      half_a_minute: "half a minute"
+      less_than_x_seconds:
+        one:   "less than 1 second"
+        other: "less than #{{count}} seconds"
+      x_seconds:
+        one:   "1 second"
+        other: "#{{count}} seconds"
+      less_than_x_minutes:
+        one:   "less than a minute"
+        other: "less than #{{count}} minutes"
+      x_minutes:
+        one:   "1 minute"
+        other: "#{{count}} minutes"
+      about_x_hours:
+        one:   "about 1 hour"
+        other: "about #{{count}} hours"
+      x_days:
+        one:   "1 day"
+        other: "#{{count}} days"
+      about_x_months:
+        one:   "about 1 month"
+        other: "about #{{count}} months"
+      x_months:
+        one:   "1 month"
+        other: "#{{count}} months"
+      about_x_years:
+        one:   "about 1 year"
+        other: "about #{{count}} years"
+      over_x_years:
+        one:   "over 1 year"
+        other: "over #{{count}} years"
+
+  number:
+    human:
+      format:
+        delimiter: ""
+        precision: 1
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: "Byte"
+            other: "Bytes"
+          kb: "KB"
+          mb: "MB"
+          gb: "GB"
+          tb: "TB"
+
+
+# Used in array.to_sentence.
+  support:
+    array:
+      sentence_connector: "and"
+      skip_last_comma: false
+
+  activerecord:
+    errors:
+      messages:
+        inclusion: "is not included in the list"
+        exclusion: "is reserved"
+        invalid: "is invalid"
+        confirmation: "doesn't match confirmation"
+        accepted: "must be accepted"
+        empty: "can't be empty"
+        blank: "can't be blank"
+        too_long: "is too long (maximum is #{{count}} characters)"
+        too_short: "is too short (minimum is #{{count}} characters)"
+        wrong_length: "is the wrong length (should be #{{count}} characters)"
+        taken: "has already been taken"
+        not_a_number: "is not a number"
+        not_a_date: "is not a valid date"
+        greater_than: "must be greater than #{{count}}"
+        greater_than_or_equal_to: "must be greater than or equal to #{{count}}"
+        equal_to: "must be equal to #{{count}}"
+        less_than: "must be less than #{{count}}"
+        less_than_or_equal_to: "must be less than or equal to #{{count}}"
+        odd: "must be odd"
+        even: "must be even"
+        greater_than_start_date: "must be greater than start date"
+        not_same_project: "doesn't belong to the same workstream"
+        circular_dependency: "This relation would create a circular dependency"
+
+  actionview_instancetag_blank_option: Please select
+
+  general_text_No: 'No'
+  general_text_Yes: 'Yes'
+  general_text_no: 'no'
+  general_text_yes: 'yes'
+  general_lang_name: 'English'
+  general_csv_separator: ','
+  general_csv_decimal_separator: '.'
+  general_csv_encoding: ISO-8859-1
+  general_pdf_encoding: ISO-8859-1
+  general_first_day_of_week: '7'
+
+  notice_account_reactivated: Your account has been reactivated.<br> Welcome back!<br><br> <a href="/">Home</a>
+  notice_account_canceled: Your account is now canceled. Thanks for trying us out.<br><br>We would love your feedback on how we can do better.<br><br><a href="mailto:feedback@bettermeans.com">feedback@bettermeans.com</a>
+  notice_account_inactive_user: Account has not yet been activated. Please check your email for activation link
+  notice_account_updated: Account was successfully updated.
+  notice_account_invalid_creditentials: Invalid user or password
+  notice_account_password_updated: Password was successfully updated.
+  notice_account_wrong_password: Wrong password
+  notice_account_register_done: Account was successfully created. To activate your account, click on the link that was emailed to you.
+  notice_account_unknown_email: Unknown user.
+  notice_can_t_change_password: This account uses an external authentication source. Impossible to change the password.
+  notice_account_lost_email_sent: An email with instructions to choose a new password has been sent to you.
+  notice_account_activated: Your account has been activated. You can now log in.
+  notice_successful_create: Successful creation.
+  notice_successful_update: Successful update.
+  notice_successful_delete: Successful deletion.
+  notice_successful_connection: Successful connection.
+  notice_file_not_found: The page you were trying to access doesn't exist or has been removed.
+  notice_locking_conflict: Data has been updated by another user.
+  notice_not_authorized: You are not authorized to access this page.
+  notice_email_sent: "An email was sent to #{{value}}"
+  notice_email_error: "An error occurred while sending mail (#{{value}})"
+  notice_feeds_access_key_reseted: Your RSS access key was reset.
+  notice_failed_to_save_issues: "Failed to save #{{count}} item(s) on #{{total}} selected: #{{ids}}."
+  notice_no_issue_selected: "No item is selected! Please, check the items you want to edit."
+  notice_account_pending: "Your account was created and is now pending administrator approval."
+  notice_default_data_loaded: Default configuration successfully loaded.
+  notice_unable_delete_version: Unable to delete deliverable.
+  notice_issue_done_ratios_updated: Issue done ratios updated.
+  notice_this_is_your_profie: "This is your public profile. To manage your account <a href='/my/account'>click here</a>"
+
+  error_old_invite : "Old or bad invitation"
+  error_bad_email_update : "Poorly formed email update"
+  error_can_t_load_default_data: "Default configuration could not be loaded: #{{value}}"
+  error_issue_not_found_in_project: 'The item was not found or does not belong to this workstream'
+  error_no_tracker_in_project: 'No issue type is associated to this workstream. Please check the Workstream settings.'
+  error_no_default_issue_status: 'No default item status is defined. Please check your configuration (Go to "Administration -> Item statuses").'
+  error_can_not_reopen_issue_on_closed_version: 'An item assigned to a closed deliverable can not be reopened'
+  error_can_not_archive_project: This project can not be archived
+  error_issue_done_ratios_not_updated: "Issue done ratios not updated."
+  error_workflow_copy_source: 'Please select a source tracker or role'
+  error_workflow_copy_target: 'Please select target tracker(s) and role(s)'
+  error_general: 'Something went wrong.'
+
+  warning_attachments_not_saved: "#{{count}} file(s) could not be saved."
+
+  mail_subject_lost_password: "Your #{{value}} password"
+  mail_body_lost_password: 'To change your password, click on the following link:'
+  mail_subject_register: "Your #{{value}} account activation"
+  mail_body_register: 'To activate your account, click on the following link:'
+  mail_body_account_information_external: "You can use your #{{value}} account to log in."
+  mail_body_account_information: Your account information
+  mail_subject_account_activation_request: "#{{value}} account activation request"
+  mail_subject_email_update_activation: "#{{value}} new email activation"
+  mail_body_account_activation_request: "A new user (#{{value}}) has registered. The account is pending your approval:"
+  mail_subject_reminder: "#{{count}} item(s) due in the next days"
+  mail_body_reminder: "#{{count}} item(s) that are owned by you are due in the next #{{days}} days:" #updated
+  mail_subject_wiki_content_added: "'#{{page}}' wiki page has been added"
+  mail_body_wiki_content_added: "The '#{{page}}' wiki page has been added by #{{author}}."
+  mail_subject_wiki_content_updated: "'#{{page}}' wiki page has been updated"
+  mail_body_wiki_content_updated: "The '#{{page}}' wiki page has been updated by #{{author}}."
+
+  gui_validation_error: 1 error
+  gui_validation_error_plural: "#{{count}} errors"
+
+  field_tags : "Tags"
+  field_points : "Avg estimated credits"
+  field_logo : "Logo"
+  field_image_file: "Upload local file"
+  field_image_file_url: "or image URL"
+  field_retro: Retrospective
+  field_volunteer: Volunteer
+  field_name: Name
+  field_description: Description
+  field_summary: Summary
+  field_is_required: Required
+  field_firstname: Firstname
+  field_lastname: Lastname
+  field_mail: Email
+  field_filename: File
+  field_filesize: Size
+  field_downloads: Downloads
+  field_author: Author
+  field_created_at: Created
+  field_updated_at: Updated
+  field_field_format: Format
+  field_is_for_all: For all workstreams
+  field_possible_values: Possible values
+  field_regexp: Regular expression
+  field_min_length: Minimum length
+  field_max_length: Maximum length
+  field_value: Value
+  field_category: Category
+  field_title: Title
+  field_project: Workstream
+  field_item: Item
+  field_status: Status
+  field_notes: Notes
+  field_is_closed: Item closed
+  field_is_default: Default value
+  field_tracker: Type
+  field_subject: Subject
+  field_due_date: Due by
+  field_expected_date: Expected by
+  field_assigned_to: Owner #Changed
+  field_priority: Priority
+  field_fixed_version: Deliverable
+  field_user: User
+  field_role: Role
+  field_homepage: Homepage
+  field_is_public: Public
+  field_parent: Sub workstream of
+  field_is_in_roadmap: Items displayed in roadmap
+  field_login: Username
+  field_mail_notification: Email Notifications
+  field_admin: Administrator
+  field_last_login_on: Last connection
+  field_language: Language
+  field_effective_date: Date
+  field_password: Password
+  field_new_password: New password
+  field_password_confirmation: Retype Password
+  field_version: Deliverable
+  field_type: Type
+  field_host: Host
+  field_port: Port
+  field_account: Account
+  field_base_dn: Base DN
+  field_attr_login: Login attribute
+  field_attr_firstname: Firstname attribute
+  field_attr_lastname: Lastname attribute
+  field_attr_mail: Email attribute
+  field_onthefly: On-the-fly user creation
+  field_start_date: Start Date
+  field_done_ratio: "% Done"
+  field_auth_source: Authentication mode
+  field_hide_mail: Hide my email address
+  field_active_only_jumps: "Show only workstreams I'm active in for top jump menu"
+  field_comments: Comment
+  field_wiki_comments: Revision notes
+  field_url: URL
+  field_start_page: Home page
+  field_subproject: Sub workstream
+  field_hours: Hours
+  field_activity: Activity
+  field_spent_on: Date
+  field_identifier: Identifier
+  field_is_filter: Used as a filter
+  field_issue_to: Related item
+  field_issue: Related Item
+  field_delay: Delay
+  field_assignable: Items can be owned by this role
+  field_redirect_existing_links: Redirect existing links
+  field_estimated_hours: Estimated time
+  field_column_names: Columns
+  field_time_zone: Time zone
+  field_searchable: Searchable
+  field_default_value: Default value
+  field_comments_sorting: Display comments
+  field_parent_title: Parent page
+  field_parent_project: Parent workstream
+  field_editable: Editable
+  field_watcher: Watcher
+  field_identity_url: OpenID URL
+  field_content: Content
+  field_group_by: Group results by
+  field_sharing: Sharing
+  field_dpp: Estimation Scale
+  field_hourly_rate_per_person: Hourly rate per person
+  field_hourly_cap: Hourly cap
+  field_pri: Pri
+
+  setting_app_title: Application title
+  setting_app_subtitle: Application subtitle
+  setting_welcome_text: Welcome text
+  setting_default_language: Default language
+  setting_login_required: Authentication required
+  setting_self_registration: Self-registration
+  setting_attachment_max_size: Attachment max. size
+  setting_issues_export_limit: Items export limit
+  setting_mail_from: Emission email address
+  setting_bcc_recipients: Blind carbon copy recipients (bcc)
+  setting_plain_text_mail: Plain text mail (no HTML)
+  setting_host_name: Host name and path
+  setting_text_formatting: Text formatting
+  setting_wiki_compression: Wiki history compression
+  setting_feeds_limit: Feed content limit
+  setting_default_projects_public: New workstreams are public by default
+  setting_autofetch_changesets: Autofetch commits
+  setting_commit_ref_keywords: Referencing keywords
+  setting_commit_fix_keywords: Fixing keywords
+  setting_autologin: Autologin
+  setting_date_format: Date format
+  setting_time_format: Time format
+  setting_cross_project_issue_relations: Allow cross-workstream item relations
+  setting_issue_list_default_columns: Default columns displayed on the item list
+  setting_commit_logs_encoding: Commit messages encoding
+  setting_emails_footer: Emails footer
+  setting_protocol: Protocol
+  setting_per_page_options: Objects per page options
+  setting_user_format: Users display format
+  setting_activity_days_default: Days displayed on workstream activity
+  setting_display_subprojects_issues: Display sub workstreams items on main workstreams by default
+  setting_enabled_scm: Enabled SCM
+  setting_mail_handler_body_delimiters: "Truncate emails after one of these lines"
+  setting_mail_handler_api_enabled: Enable WS for incoming emails
+  setting_mail_handler_api_key: API key
+  setting_sequential_project_identifiers: Generate sequential workstream identifiers
+  setting_gravatar_enabled: Use Gravatar user icons
+  setting_gravatar_default: Default Gravatar image
+  setting_diff_max_lines_displayed: Max number of diff lines displayed
+  setting_file_max_size_displayed: Max size of text files displayed inline
+  setting_openid: Allow OpenID login and registration
+  setting_password_min_length: Minimum password length
+  setting_new_project_user_role_id: Role given to a non-admin user who creates a workstream
+  setting_default_projects_modules: Default enabled modules for new workstreams
+  setting_issue_done_ratio: Calculate the item done ratio with
+  setting_issue_done_ratio_issue_field: Use the item field
+  setting_issue_done_ratio_issue_status: Use the item status
+  setting_start_of_week: Start calendars on
+  setting_rest_api_enabled: Enable REST web service
+
+  permission_view_project : View workstream
+  permission_add_project: Create workstream
+  permission_add_subprojects: Create sub workstream
+  permission_edit_project: Edit workstream
+  permission_move_project: Move workstream
+  permission_select_project_modules: Select workstream modules
+  permission_manage_members: Manage members
+  permission_manage_versions: Manage deliverables
+  permission_manage_categories: Manage item categories
+  permission_add_issues: Add items
+  permission_edit_issues: Edit items
+  permission_manage_issue_relations: Manage item relations
+  permission_add_issue_notes: Add notes
+  permission_edit_issue_notes: Edit notes
+  permission_edit_own_issue_notes: Edit own notes
+  permission_move_issues: Move items
+  permission_delete_issues: Delete items
+  permission_manage_public_queries: Manage public queries
+  permission_save_queries: Save queries
+  permission_view_gantt: View gantt chart
+  permission_view_calendar: View calendar
+  permission_view_issue_watchers: View watchers list
+  permission_add_issue_watchers: Add watchers
+  permission_delete_issue_watchers: Delete watchers
+  permission_log_time: Log spent time
+  permission_view_time_entries: View spent time
+  permission_edit_time_entries: Edit time logs
+  permission_edit_own_time_entries: Edit own time logs
+  permission_manage_news: Manage news
+  permission_comment_news: Comment news
+  permission_manage_documents: Manage documents
+  permission_view_documents: View documents
+  permission_manage_files: Manage files
+  permission_view_files: View files
+  permission_manage_wiki: Manage wiki
+  permission_rename_wiki_pages: Rename wiki pages
+  permission_delete_wiki_pages: Delete wiki pages
+  permission_view_wiki_pages: View wiki
+  permission_view_wiki_edits: View wiki history
+  permission_edit_wiki_pages: Edit wiki pages
+  permission_delete_wiki_pages_attachments: Delete attachments
+  permission_protect_wiki_pages: Protect wiki pages
+  permission_view_changesets: View changesets
+  permission_commit_access: Commit access
+  permission_manage_boards: Manage discussions
+  permission_view_messages: View messages
+  permission_add_messages: Post messages
+  permission_edit_messages: Edit messages
+  permission_edit_own_messages: Edit own messages
+  permission_delete_messages: Delete messages
+  permission_delete_own_messages: Delete own messages
+
+  project_module_issue_tracking: Item tracking
+  project_module_time_tracking: Time tracking
+  project_module_news: News
+  project_module_documents: Documents
+  project_module_files: Files
+  project_module_wiki: Wiki
+  project_module_boards: Discussions
+
+  title_member_nomination : "Motion to elect #{{user}} as a member"
+  title_core_member_nomination : "Motion to elect #{{user}} to the Core Team"
+  title_core_member_removal : "Motion to remove #{{user}} from the Core Team"
+  title_member_removal : "Motion to remove #{{user}} as a member"
+
+  label_usage_over : "Your usage is over your plan's limits"
+  label_trial_expired : "Your trial period has expired"
+  label_email_update: Your new email address
+  label_new_page: New page
+  label_my_issues: My items
+  label_joined_issues: Joined
+  label_joined: Joined
+  label_projects_recent: Recent workstreams
+  label_projects_active_in: Workstreams I'm active in
+  label_projects_all : All my workstreams
+  label_view_all : View all
+  label_track_invites: Track sent invites
+  label_unarchive_project: Un-archive workstream
+  label_unarchive_project_brackets: (unarchive)
+  label_archive_project: Archive workstream
+  label_delete_project: Delete workstream
+  label_move_project: Move workstream
+  label_note_to_recipient: Note for recipient (optional)
+  label_amount_to_transfer: Amount to Transfer
+  label_select_recipient: Select Recipient
+  label_credit_transfers: Credit Transfers
+  label_credit_transfer: "Transfer credits"
+  label_new_credit_transfer: New Transfer
+  label_select_project: Select Project Workstream
+  label_previous_credit_transfers: Your History
+  label_data_dump: Data Dump
+  text_data_dump: Download a local copy of all issues that belong to workstreams that you own
+  label_issues: datadump.csv
+  label_type_of_workstream: Workstream Options
+  label_your_gravatar: Profile Picture
+  label_team_with_access: Members with clearance (to this workstream)
+  label_select_plan: Select New Plan
+  label_current_plan: Current Plan
+  label_user: User
+  label_user_plural: Users
+  label_user_new: New user
+  label_user_anonymous: Anonymous
+  label_project: Workstream
+  label_project_new: New workstream
+  label_project_plural: Workstreams
+  label_x_projects:
+    zero:  no workstreams
+    one:   1 workstream
+    other: "#{{count}} workstreams"
+  label_project_all: All Workstreams
+  label_project_latest: Latest Workstreams
+  label_enterprise_latest: Latest Public Workstreams
+  label_enterprise_active: Most Active Public Workstreams
+  label_enterprise_plural: Open enterprises
+  label_issue: Item
+  label_issue_new: New item
+  label_issue_plural: Items
+  label_issue_view_all: View all items
+  label_issues_by: "Items by #{{value}}"
+  label_issue_added: Item added
+  label_issue_updated: Item updated
+  label_document: Document
+  label_document_new: New document
+  label_document_plural: Docs
+  label_document_added: Document added
+  label_quick_links: Quick links
+  label_role: Role
+  label_role_plural: Roles
+  label_role_new: New role
+  label_role_and_permissions: Roles and permissions
+  label_member: Member
+  label_member_new: New member
+  label_member_plural: Members
+  label_team : Team
+  label_team_plural : Teams
+  label_active_team : Active people
+  label_dashboard : Dashboard
+  label_tracker: Type
+  label_tracker_plural: Types
+  label_tracker_new: New type
+  label_workflow: Workflow
+  label_issue_status: Item status
+  label_issue_status_plural: Item statuses
+  label_issue_status_new: New status
+  label_enumerations: Enumerations
+  label_enumeration_new: New value
+  label_information: Information
+  label_information_plural: Information
+  label_personal_information: Personal Info
+  label_billing_information: Billing Info
+  label_please_login: Please log in
+  label_register: Sign up
+  label_login_with_open_id_option: or login with OpenID
+  label_password_lost: Lost password
+  label_home: Home
+  label_my_home: My Home
+  label_my_page: Summary
+  label_new_project: New Workstream
+  label_my_account: Account
+  label_my_projects: My workstreams
+  label_projects_i_belong_to: Workstreams I belong to
+  label_projects_i_started: Workstreams I started
+  label_activities_i_belong_to: Recent activity
+  label_administration: Administration
+  label_login: Sign in
+  label_logout: Sign out
+  label_help: Help
+  label_reported_issues: Reported items
+  label_assigned_to_me_issues: Committed
+  label_added_issues: Created
+  label_recent_issues: Recent
+  label_assigned: Own
+  label_last_login: Last connection
+  label_registered_on: Signed up on
+  label_activity: Activity
+  label_overall_activity: Overall activity
+  label_user_activity: "#{{value}}'s activity"
+  label_new: New
+  label_logged_as: Logged in as
+  label_environment: Environment
+  label_authentication: Authentication
+  label_auth_source: Authentication mode
+  label_auth_source_new: New authentication mode
+  label_auth_source_plural: Authentication modes
+  label_subproject : Sub workstream
+  label_subproject_plural: Sub workstreams
+  label_subproject_new: New sub workstream
+  label_new_item_in: New item in
+  label_and_its_subprojects: "#{{value}} and its sub workstreams"
+  label_waiting_for_you: "#{{notifications}} waiting for you"
+  label_min_max_length: Min - Max length
+  label_list: List
+  label_date: Date
+  label_integer: Integer
+  label_float: Float
+  label_boolean: Boolean
+  label_string: Text
+  label_text: Long text
+  label_attribute: Attribute
+  label_attribute_plural: Attributes
+  label_download: "#{{count}} Download"
+  label_download_plural: "#{{count}} Downloads"
+  label_no_data: Nothing here yet
+  label_no_credits: You have no credits to transfer
+  label_change_status: Change status
+  label_history: History
+  label_attachment: File
+  label_attachment_new: New file
+  label_attachment_delete: Delete file
+  label_attachment_plural: Files
+  label_file_added: File added
+  label_report: Report
+  label_report_plural: Reports
+  label_news: News
+  label_news_new: Add news
+  label_news_plural: News
+  label_news_latest: Latest news
+  label_news_view_all: View all news
+  label_activity_latest: Latest activity
+  label_activity_view_all: View all activity
+  label_news_added: News added
+  label_settings: Settings
+  label_overview: Overview
+  label_version: Deliverable
+  label_version_new: New deliverable
+  label_version_plural: Deliverables
+  label_confirmation: Confirmation
+  label_export_to: 'Also available in:'
+  label_read: Read...
+  label_public_projects: Public workstreams
+  label_open_issues: open
+  label_open_issues_plural: open
+  label_closed_issues: closed
+  label_closed_issues_plural: closed
+  label_x_open_issues_abbr_on_total:
+    zero:  0 open / #{{total}}
+    one:   1 open / #{{total}}
+    other: "#{{count}} open / #{{total}}"
+  label_x_open_issues_abbr:
+    zero:  0 open
+    one:   1 open
+    other: "#{{count}} open"
+  label_x_closed_issues_abbr:
+    zero:  0 closed
+    one:   1 closed
+    other: "#{{count}} closed"
+  label_total: Total
+  label_permissions: Permissions
+  label_current_status: Current status
+  label_new_statuses_allowed: New statuses allowed
+  label_all: all
+  label_none: none
+  label_nobody: nobody
+  label_next: Next
+  label_previous: Previous
+  label_used_by: Used by
+  label_details: Details
+  label_add_note: Add a note
+  label_per_page: Per page
+  label_calendar: Calendar
+  label_months_from: months from
+  label_gantt: Gantt
+  label_internal: Internal
+  label_last_changes: "last #{{count}} changes"
+  label_change_view_all: View all changes
+  label_personalize_page: Personalize this page
+  label_comment: Comment
+  label_comment_plural: Comments
+  label_x_comments:
+    zero: no comments
+    one: 1 comment
+    other: "#{{count}} comments"
+  label_comment_add: Add a comment
+  label_comment_added: Comment added
+  label_comment_delete: Delete comments
+  label_query: Custom query
+  label_query_plural: Custom queries
+  label_query_new: New query
+  label_filter_add: Add filter
+  label_filter_plural: Filters
+  label_equals: is
+  label_not_equals: is not
+  label_in_less_than: in less than
+  label_in_more_than: in more than
+  label_greater_or_equal: '>='
+  label_less_or_equal: '<='
+  label_in: in
+  label_today: today
+  label_Today: Today
+  label_same_day: Same day
+  label_all_time: all time
+  label_yesterday: yesterday
+  label_this_week: this week
+  label_last_week: last week
+  label_last_n_days: "last #{{count}} days"
+  label_this_month: this month
+  label_last_month: last month
+  label_this_year: this year
+  label_date_range: Date range
+  label_less_than_ago: less than days ago
+  label_more_than_ago: more than days ago
+  label_ago: days ago
+  label_ago_simple: ago
+  label_contains: contains
+  label_not_contains: doesn't contain
+  label_day: day
+  label_day_plural: days
+  label_browse: Browse
+  label_browse_workstreams: Browse bettermeans
+  label_browse_activity: Browse activity
+  label_modification: "#{{count}} change"
+  label_modification_plural: "#{{count}} changes"
+  label_branch: Branch
+  label_tag: Tag
+  label_revision: Revision
+  label_revision_plural: Revisions
+  label_revision_id: "Revision #{{value}}"
+  label_associated_revisions: Associated revisions
+  label_added: added
+  label_modified: modified
+  label_copied: copied
+  label_renamed: renamed
+  label_deleted: deleted
+  label_moved: moved
+  label_archived: archived
+  label_unarchived: un-archived
+  label_project_description: Description
+  label_message: Discussion
+  label_latest_revision: Latest revision
+  label_latest_revision_plural: Latest revisions
+  label_view_revisions: View revisions
+  label_view_all_revisions: View all revisions
+  label_max_size: Maximum size
+  label_sort_highest: Move to top
+  label_sort_higher: Move up
+  label_sort_lower: Move down
+  label_sort_lowest: Move to bottom
+  label_roadmap: Roadmap
+  label_roadmap_due_in: "Due in #{{value}}"
+  label_roadmap_overdue: "#{{value}} late"
+  label_roadmap_no_issues: No items for this deliverable
+  label_search: Search
+  label_result_plural: Results
+  label_all_words: All words
+  label_wiki: Wiki
+  label_wiki_edit: Wiki edit
+  label_wiki_edit_plural: Wiki edits
+  label_wikipage: Wiki page
+  label_wiki_page: Wiki page
+  label_wiki_page_plural: Wiki pages
+  label_index_by_title: Index by title
+  label_index_by_date: Index by date
+  label_current_version: Current deliverable
+  label_preview: Preview
+  label_feed_plural: Feeds
+  label_changes_details: Details of all changes
+  label_issue_tracking: Work Breakdown
+  label_boards: Discussion
+  label_spent_time: Spent time
+  label_f_hour: "#{{value}} hour"
+  label_f_hour_plural: "#{{value}} hours"
+  label_time_tracking: Time tracking
+  label_change_plural: Changes
+  label_change : Change
+  label_statistics: Statistics
+  label_commits_per_month: Commits per month
+  label_commits_per_author: Commits per author
+  label_view_diff: View differences
+  label_diff_inline: inline
+  label_diff_side_by_side: side by side
+  label_options: Options
+  label_copy_workflow_from: Copy workflow from
+  label_permissions_report: Permissions report
+  label_watched_issues: Watched
+  label_watched: Watched
+  label_related_issues: Related items
+  label_applied_status: Applied status
+  label_loading: Working...
+  label_relation_new: New relation
+  label_relation_delete: Delete relation
+  label_relates_to: related to
+  label_duplicates: duplicates
+  label_duplicated_by: duplicated by
+  label_blocks: blocks
+  label_blocked_by: blocked by
+  label_precedes: precedes
+  label_follows: follows
+  label_end_to_start: end to start
+  label_end_to_end: end to end
+  label_start_to_start: start to start
+  label_start_to_end: start to end
+  label_stay_logged_in: Stay logged in
+  label_disabled: disabled
+  label_show_completed_versions: Show completed deliverables
+  label_me: me
+  label_board: Discussion
+  label_board_new: New discussion
+  label_board_plural: Discussions
+  label_topic_plural: Topics
+  label_message_plural: Messages
+  label_message_last: Last message
+  label_message_new: New message
+  label_topic_new: New topic
+  label_message_posted: Message added
+  label_reply_plural: Replies
+  label_comments_plural: Comments
+  label_send_information: Send account information to the user
+  label_year: Year
+  label_month: Month
+  label_week: Week
+  label_date_from: From
+  label_date_to: To
+  label_language_based: Based on user's language
+  label_sort_by: "Sort by #{{value}}"
+  label_send_test_email: Send a test email
+  label_feeds_access_key: RSS access key
+  label_missing_feeds_access_key: Missing a RSS access key
+  label_feeds_access_key_created_at: "RSS access key created #{{value}} ago"
+  label_module_plural: Modules
+  label_added_time_by: "Added by #{{author}} #{{age}} ago"
+  label_updated_time_by: "Updated by #{{author}} #{{age}} ago"
+  label_created_time_by: "Created #{{age}} ago by"
+  label_updated_time: "Updated #{{value}} ago"
+  label_jump_to_a_project: MY WORKSTREAMS
+  label_file_plural: Files
+  label_changeset_plural: Changesets
+  label_default_columns: Default columns
+  label_no_change_option: (No change)
+  label_bulk_edit_selected_issues: Bulk edit selected items
+  label_theme: Theme
+  label_default: Default
+  label_search_titles_only: Titles only
+  label_user_mail_option_all: "For any event on all my workstreams"
+  label_user_mail_option_selected: "For any event on the selected workstreams only..."
+  label_user_mail_option_none: "Only for things I watch or I'm involved in"
+  label_user_mail_no_self_notified: "I don't want to be notified of changes that I make myself"
+  label_user_mail_no_emails: "Disable email notification"
+  label_user_mail_daily_digest: "Send me a daily summary of system updates to issues I'm involved in"
+  label_registration_activation_by_email: account activation by email
+  label_registration_manual_activation: manual account activation
+  label_registration_automatic_activation: automatic account activation
+  label_display_per_page: "Per page: #{{value}}"
+  label_age: Age
+  label_change_properties: Change properties
+  label_general: General
+  label_more: More
+  label_scm: SCM
+  label_plugins: Plugins
+  label_ldap_authentication: LDAP authentication
+  label_downloads_abbr: D/L
+  label_optional_description: Optional description
+  label_add_another_file: Add another file
+  label_preferences: Preferences
+  label_chronological_order: In chronological order
+  label_reverse_chronological_order: In reverse chronological order
+  label_planning: Planning
+  label_incoming_emails: Incoming emails
+  label_generate_key: Generate a key
+  label_issue_watchers: Watchers
+  label_example: Example
+  label_display: Display
+  label_sort: Sort
+  label_ascending: Ascending
+  label_descending: Descending
+  label_date_from_to: From #{{start}} to #{{end}}
+  label_wiki_content_added: Wiki page added
+  label_wiki_content_updated: Wiki page updated
+  label_group: Group
+  label_group_plural: Groups
+  label_group_new: New group
+  label_time_entry_plural: Spent time
+  label_commit_request_history: Ownership History #new
+  label_by: "by #{{author}} #{{age}} ago" #new
+  label_requested_by: "Requested by #{{author}} #{{age}} ago" #new
+  label_offered_by: "Offered by #{{author}} to #{{responder}} #{{age}} ago" #new
+  label_accepted_by: "Accepted by #{{responder}} #{{age}} ago" #new
+  label_declined_by: "Declined by #{{responder}} #{{age}} ago" #new
+  label_from_ago: "from #{{author}} #{{age}} ago" #new
+  label_taken_by: "Taken by #{{responder}} #{{age}} ago" #news
+  label_declined: "Declined #{{age}} ago" #new
+  label_accepted: "Accepted #{{age}} ago" #new
+  label_recinded: "Withdrawn #{{age}} ago" #new
+  label_released: "Released #{{age}} ago" #new
+  label_not_sure: "Not sure"
+  label_commitment: "Commitment"
+  label_commitment_offer: "Ownership Offer"
+  label_commitment_request: "Ownership Request"
+  label_notification : "Notification"
+  label_notifications : "Notifications"
+  label_new_notification : "notification"
+  label_new_notifications : "notifications"
+  label_response_sent : "Response sent"
+  label_response_ignored : "Request ignored"
+  label_you : "you"
+  label_for : "for"
+  label_from : "from"
+  label_ignored : "Ignored"
+  label_marked_as_read : "Marked as read"
+  label_ownership_offered : "Ownership offered"
+  label_ownership_offered_to : "Ownership offered to #{{user}}"
+  label_ownership_offer_declined : "Ownership offer declined"
+  label_ownership_offer_accepted : "Ownership offer accepted"
+  label_ownership_offer_declined_from : "#{{user}}'s ownership offer was declined"
+  label_ownership_offer_accepted_from : "#{{user}}'s ownership offer was accepted"
+  label_ownership_offer_withdrawn : "Ownership offer withdrawn"
+  label_ownership_offer_withdrawn_to : "Ownership offer to #{{user}} was withdrawn"
+  label_ownership_requested : "Ownership requested"
+  label_ownership_request_accepted : "Ownership request accepted"
+  label_ownership_request_auto_accepted : "Ownership request auto accepted"
+  label_ownership_request_declined : "Ownership request declined"
+  label_ownership_request_accepted_from : "#{{user}}'s ownership request accepted"
+  label_ownership_request_declined_from : "#{{user}}'s ownership request declined"
+  label_ownership_request_recinded : "Ownership request recinded"
+  label_ownership_released : "Ownership released"
+  label_ownership_taken : "Ownership taken"
+  label_commit_request_plural : "Task ownership"
+  label_team_offer : "Core Team Invitation"
+  label_team_offer_plural : "Team members"
+  label_team_plural : "Team"
+  label_team_invitation : "Core Team Invitation"
+  label_team_request : "Core Team Request"
+  label_team_request_plural : "Core Team requests"
+  label_accepted : "accepted"
+  label_sent : "sent"
+  label_withdrawn : "withdrawn"
+  label_declined : "declined"
+  label_to_join_core_team_of : "to join the #{{project}} core team"
+  label_request : "Request"
+  label_invitation : "Invitation"
+  label_was : "was"
+  label_your : 'Your'
+  label_to : "to"
+  label_note_from : "Note from #{{author}}"
+  label_sending_team_invitation : "#{{author}} wants you to join the Core Team for the #{{project}} workstream"
+  label_sending_team_request : "#{{author}} wants to join the Core Team for the #{{project}} workstream"
+  label_team_view_all : "View team details"
+  label_team_view_all_enterprise : "View entire team"
+  label_member_role_plural : "Team Changes"
+  label_join_core_team : "Join Core Team"
+  label_leave_core_team : "Leave Core Team"
+  label_request_to_join_core_team : "Request to join Core Team"
+  label_invitation_to_join_core_team : "Invite to Core Team"
+  label_team_points : "Core Points"
+  label_share : "Share"
+  label_share_plural : "Shares"
+  label_credit_plural : "Credits"
+  label_credit : "Credit"
+  label_retro_started : "Retrospective Started"
+  label_retro_ended : "Retrospective Ended"
+  label_motion_started : "New motion: #{{title}}"
+  label_credits : Credits
+  label_shares : Shares
+  label_credit_queue : Credit Queue (Active Credits)
+  label_credit_history : Credit History (All Credits)
+  label_my_credits : My Credits
+  label_credits_breakdown : Credit Breakdown
+  label_active_credits : Active Credits
+  label_outstanding_credits : Oustanding Credits
+  label_total_credits_issued : Total Issued
+  label_youve_got_credits : "You've got credits!"
+  label_someone_joined_your_issue : "#{{joiner}} joined an issue assigned to you"
+  label_someone_added_you_to_their_issue : "#{{sender}} added you to an issue they own"
+  label_someone_removed_you_from_their_issue : "#{{sender}} removed you from an issue they own"
+  label_someone_left_your_issue : "#{{joiner}} left an issue assigned to you"
+  label_someone_mentioned_you : "#{{mentioner}} mentioned you"
+  label_agree : "Agree"
+  label_disagree : "Disagree"
+  label_block : "Block"
+  label_neutral : "Neutral"
+  label_history : "History"
+  label_select : "Select"
+  label_no_mention : "No unread mentions"
+  label_mentions : "Mentions"
+
+  label_version_sharing_none: Not shared
+  label_version_sharing_descendants: With workstreams
+  label_version_sharing_hierarchy: With workstream hierarchy
+  label_version_sharing_tree: With workstream tree
+  label_version_sharing_system: With all workstreams
+  label_update_issue_done_ratios: Update item done ratios
+  label_copy_source: Source
+  label_copy_target: Target
+  label_copy_same_as_target: Same as target
+  label_display_used_statuses_only: Only display statuses that are used by this tracker
+  label_api_access_key: API access key
+  label_missing_api_access_key: Missing an API access key
+  label_api_access_key_created_at: "API access key created #{{value}} ago"
+  label_dpp_scale: "Estimation Scale"
+
+  label_motion: "Motion"
+  label_motions_new: New motion
+
+
+  label_motion_state0: "In Progress"
+  label_motion_state1: "Passed"
+  label_motion_state2: "Defeated"
+  label_motion_state3: "Cancelled"
+
+  label_motion_vote_type1 : "Unanimous Consensus"
+  label_motion_vote_type2 : "Lazy Majority"
+  label_motion_vote_type3 : "Share Majority"
+
+  label_motion_vote_type1_desc : "no blocks or disagrees"
+  label_motion_vote_type2_desc : "more agrees than disagree, no blocks"
+  label_motion_vote_type3_desc : "1 share = 1 vote. minimum 2/3 agree"
+
+  label_motion_vote_action1 : "Block"
+  label_motion_vote_action9999 : "Disagree"
+  label_motion_vote_action10000 : "Neutral"
+  label_motion_vote_action10001 : "Agree"
+  label_motion_vote_action_share_agree : "Agree with #{{points}} shares"
+  label_motion_vote_action_share_disagree : "Disagree with #{{points}} shares"
+  label_motion_vote_action_share_neutral : "Neutral with #{{points}} shares"
+  label_you_voted : "You voted: <b>#{{action}}</b>"
+  label_voted : "voted"
+  label_you_havent_voted : "You haven't cast your vote yet"
+  label_tally : "Tally"
+
+  label_motion_variation0 : "General Motion"
+  label_motion_variation1 : "Extraordinary Motion"
+  label_motion_variation2 : "New Member Nomination"
+  label_motion_variation3 : "New Core Team Member Nomination"
+  label_motion_variation4 : "Motion to Remove Member"
+  label_motion_variation5 : "Motion to Remove Core Team Member"
+  label_motion_variation6 : "Board Motion (public)"
+  label_motion_variation7 : "Board Motion (private)"
+  label_motion_variation8 : "Motion to Add Hourly Activity Type"
+
+  label_binding : "Binding"
+  label_non_binding : "Non binding"
+
+  label_agree_total : "Agree Total"
+  label_disagree_total : "Disagree Total"
+  label_hidden : "(user hidden)"
+
+  label_motions_active : "Active Motions"
+  label_motions_view_all : "View all Motions"
+  label_new_role : "New role: #{{role_name}}"
+  5label_new_invitation : "Invitation to join #{{project_name}} as a #{{role_name}}"
+
+  label_drop_from_core_team : "Remove from Core"
+  label_nominate_to_core_team : "Nominate to Core"
+  label_drop_from_member : "Remove Membership"
+  label_nominate_to_member : "Nominate to Membership"
+
+  label_reputation : "Reputation Matrix"
+  label_assessment_accuracy : "Assessment Accuracy"
+
+  label_hourly_type: "Hourly type"
+  label_hourly_type_plural: "Hourly types"
+  label_hourly_type_new: "New hourly type"
+  label_hourly_rate_per_person: "Hourly rate per person"
+  label_hourly_cap: "Hourly cap"
+
+  label_invitation_new: "Invite people"
+  label_invitation_others: "Invite others"
+
+  label_all_activity: "Browse all activity"
+
+  label_cancel_account: "Cancel my account"
+
+  field_b_first_name: "First name"
+  field_b_last_name: "Last name"
+  field_b_address1: "Street Address"
+  field_b_address2: "Address (line 2)"
+  field_b_city: "City"
+  field_b_state: "State"
+  field_b_zip: "Zip/Postal Code"
+  field_b_country: "Country"
+  field_b_phone: "Phone"
+  field_b_cc_type: "Type"
+  field_b_cc_month: "Expiration Date"
+  field_b_cc_year: ""
+  field_b_cc_last_four: "Credit Card"
+  label_b_expiration: "Expiration Date"
+  label_b_verification_code: "Verification Code"
+
+  label_memberrole: "membership"
+
+
+  button_upgrade : Upgrade
+  button_update_billing : Update Billing
+  button_accept_invitation : Accept Invitation
+  button_working : working...
+  button_change_plan: Change Plan
+  button_update_billing: Update billing
+  button_login: Login
+  button_submit: Submit
+  button_search: Search
+  button_save: Save
+  button_check_all: Check all
+  button_uncheck_all: Uncheck all
+  button_delete: Delete
+  button_create: Create
+  button_resend: Resend
+  button_create_and_continue: Create and continue
+  button_test: Test
+  button_edit: Edit
+  button_add: Add
+  button_add_team_member: + Add Someone
+  button_change: Change
+  button_apply: Apply
+  button_clear: Clear
+  button_lock: Lock
+  button_unlock: Unlock
+  button_download: Download
+  button_list: List
+  button_view: View
+  button_move: Move
+  button_move_and_follow: Move and follow
+  button_back: Back
+  button_cancel: Cancel
+  button_close: Close
+  button_activate: Activate
+  button_sort: Sort
+  button_log_time: Log time
+  button_rollback: Rollback to this deliverable
+  button_watch: Watch
+  button_unwatch: Unwatch
+  button_reply: Reply
+  button_reply: Comment
+  button_archive: Archive
+  button_unarchive: Unarchive
+  button_reset: Reset
+  button_rename: Rename
+  button_change_password: Change password
+  button_copy: Copy
+  button_copy_and_follow: Copy and follow
+  button_annotate: Annotate
+  button_update: Update
+  button_comment: Comment
+  button_signup: Sign up
+  button_configure: Configure
+  button_quote: Quote
+  button_participate: Participate
+  button_request_commitment_request: Request Ownership #new
+  button_request_commitment_take: Take Ownership #new
+  button_request_commitment_remove: Withdraw Ownership Request #new
+  button_request_commitment_withdraw: Withdraw #new
+  button_request_commitment_remove_offer: Withdraw Ownership Offer #new
+  button_request_commitment_giveup: Release Ownership #new
+  button_request_commitment_transfer: Transfer Ownership #new
+  button_request_commitment_accept: Accept #new
+  button_request_commitment_decline: Decline #new
+  button_request_commitment_offer: Offer Ownership #new
+
+  button_team_offer_request: Request to join Core Team #new
+  button_team_offer_take: Get on the Core Team #new
+  button_team_offer_withdraw_request: Withdraw Core Team request  #new
+  button_team_offer_withdraw_invitation: Withdraw Core Team invitation #new
+  button_team_offer_giveup: Resign from Core Team #new
+  button_team_offer_accept: Accept #new
+  button_team_offer_decline: Decline #new
+  button_team_offer_invite: Send invitation to join Core Team #new
+
+  button_ignore: Ignore
+  button_mark_as_read: Mark as read
+  button_duplicate: Duplicate
+  button_show: Show
+
+  button_activate: Activate
+  button_deactivate: Deactivate
+
+  button_dashboard: Dashboard
+
+  status_active: active
+  status_registered: registered
+  status_locked: locked
+
+  version_status_open: open
+  version_status_locked: locked
+  version_status_closed: closed
+
+  field_active: Active
+  field_body: Body
+  field_joined_by: Joined by
+  field_item_url: Permalink
+
+  text_invite_role_instruction: Invite people to this role
+  text_resend_invite_message: "Add a personal comment to the invitation reminder"
+  text_reset_link: "Reset invitation code"
+  text_personalize_invitations: "Personalize your invitation"
+  text_email_instruction: "Enter up to 50 emails, one email per line"
+  text_invite_others_to_contribute: "Invite anyone to contribute to"
+  text_invite_others_to_contribute_personal: "OR - Send personalized, individual invitations"
+  text_confirm_delete_project: "Are you sure you want to delete this workstream? This action cannot be undone!"
+  text_confirm_cancel_account: "Are you sure you want to cancel your account? This action cannot be undone!"
+  text_confirm_archive_project: "Are you sure you want to archive this workstream? Nobody will be able to see it anymore. You can unarchive it in the future."
+  text_confirm_unarchive_project: "Are you sure you want to unarchive this workstream?"
+  text_included_note: note
+  text_failed_to_transfer: Failed to transfer credits.<br>
+  text_your_gravatar: We use <a href="http://gravatar.com" target="blank">Gravatar</a> to display your profile picture. <br>To add/update your picture <a href="http://gravatar.com" target="blank">create an account here</a> using the same email you used to signup for BetterMeans
+  text_select_mail_notifications: Select actions for which email notifications should be sent.
+  text_regexp_info: eg. ^[A-Z0-9]+$
+  text_min_max_length_info: 0 means no restriction
+  text_project_destroy_confirmation: Are you sure you want to delete this workstream and related data ?
+  text_subprojects_destroy_warning: "Its sub workstream(s): #{{value}} will be also deleted."
+  text_workflow_edit: Select a role and a type to edit the workflow
+  text_are_you_sure: Are you sure ?
+  text_journal_changed: "#{{label}} changed from #{{old}} to #{{new}}"
+  text_journal_set_to: "#{{label}} set to #{{value}}"
+  text_journal_deleted: "#{{label}} deleted (#{{old}})"
+  text_journal_added: "#{{label}} #{{value}} added"
+  text_tip_task_begin_day: task beginning this day
+  text_tip_task_end_day: task ending this day
+  text_tip_task_begin_end_day: task beginning and ending this day
+  text_project_identifier_info: 'Only lower case letters (a-z), numbers and dashes are allowed.<br />Once saved, the identifier can not be changed.'
+  text_caracters_maximum: "#{{count}} characters maximum."
+  text_caracters_minimum: "Must be at least #{{count}} characters long."
+  text_length_between: "Length between #{{min}} and #{{max}} characters."
+  text_tracker_no_workflow: No workflow defined for this type
+  text_unallowed_characters: Unallowed characters
+  text_comma_separated: Multiple values allowed (comma separated).
+  text_issues_ref_in_commit_messages: Referencing and fixing items in commit messages
+  text_issue_added: "Item #{{id}} has been reported by #{{author}}."
+  text_issue_updated: "Item #{{id}} has been updated by #{{author}}."
+  text_line_separated: Multiple values allowed (one line for each value).
+  text_wiki_destroy_confirmation: Are you sure you want to delete this wiki and all its content ?
+  text_user_mail_option: "For unselected workstreams, you will only receive notifications about things you watch or you're involved in (eg. items you're the author or owner)." #updated
+  text_no_configuration_data: "Roles, types, item statuses and workflow have not been configured yet.\nIt is highly recommended to load the default configuration. You will be able to modify it once loaded."
+  text_load_default_configuration: Load the default configuration
+  text_status_changed_by_changeset: "Applied in changeset #{{value}}."
+  text_issues_destroy_confirmation: 'Are you sure you want to delete the selected item(s) ?'
+  text_select_project_modules: 'Select modules to enable for this workstream:'
+  text_default_administrator_account_changed: Default administrator account changed
+  text_file_repository_writable: Attachments directory writable
+  text_plugin_assets_writable: Plugin assets directory writable
+  text_rmagick_available: RMagick available (optional)
+  text_destroy_time_entries_question: "#{{hours}} hours were reported on the items you are about to delete. What do you want to do ?"
+  text_destroy_time_entries: Delete reported hours
+  text_assign_time_entries_to_project: Assign reported hours to the workstream
+  text_reassign_time_entries: 'Reassign reported hours to this item:'
+  text_user_wrote: "#{{value}} wrote:"
+  text_enumeration_destroy_question: "#{{count}} objects are assigned to this value."
+  text_enumeration_category_reassign_to: 'Reassign them to this value:'
+  text_email_delivery_not_configured: "Email delivery is not configured, and notifications are disabled.\nConfigure your SMTP server in config/email.yml and restart the application to enable them."
+  text_diff_truncated: '... This diff was truncated because it exceeds the maximum size that can be displayed.'
+  text_wiki_page_destroy_question: "This page has #{{descendants}} child page(s) and descendant(s). What do you want to do?"
+  text_wiki_page_nullify_children: "Keep child pages as root pages"
+  text_wiki_page_destroy_children: "Delete child pages and all their descendants"
+  text_wiki_page_reassign_children: "Reassign child pages to this parent page"
+  text_create_dialogue_choose_days: "How much time to you need to get this done <br />(from the time you own it)?"
+  text_select_user_dialogue_choose_user: "Choose someone to send this request to"
+  text_you_are_the_new_owner_of : "You are the new proud owner of"
+  text_is_asking_ownership_for : "is asking for ownership of a task you"
+  text_is_offering_ownership_for : "is offering you ownership of a task"
+  text_ownership_request_declined : "Ownership request declined"
+  text_ownership_request_accepted : "Ownership request accepted"
+  text_your_ownsership_request_declined_for : "You request for ownership has been declined for "
+  text_ownership_offer_accepted : "Ownership offer accepted"
+  text_your_offer_was_accepted_for : "Your offer was accepted for "
+  text_ownership_offer_declined : "Ownership offer declined"
+  text_your_offer_was_declined_for : "Your offer was declined for "
+  text_loading_dashboard : "Loading dashboard data..."
+  text_loading_dashboard_error : "Failed to load data... please check your internet connectivity and <a href='#' onclick='refresh_local_data();return false;'>refresh</a>"
+  text_retro_started_for : "A retrospective for the "
+  text_retro_started : " workstream has started. <br/>You have 3 days to give your team feedback on their contribution"
+  text_retro_ended_for : "A retrospective for the"
+  text_retro_ended : " workstream has ended. <br/>Click below to see your team's feedback, and your final contribution"
+  text_credits_transferred: "#{{sender}} just transferred #{{amount}} credits to you in #{{project}}"
+  text_credits_distributed_for : "You earned #{{amount}} credits for your work on <strong>#{{workstream}}</strong>. Congrats!"
+  text_credits_are_a_gift : "These credits were gifted to you by your peers for your contribution. They're not a part of any retrospective."
+  text_credits_are_an_expense : "These credits are a reimbursment for an expense item. They're not a part of any retrospective."
+  text_joiner_is_now_working_with_you : "#{{joiner}} is now working with you on<br/>#{{issue}}"
+  text_joiner_is_no_longer_working_with_you : "#{{joiner}} is no longer working with you on<br/>#{{issue}}"
+  text_you_are_now_working_with_you : "You are now part of the team working on<br/>#{{issue}}"
+  text_you_are_no_longer_working_on : "You are no longer part of the team working on<br/>#{{issue}}"
+  text_history_hidden_until_you_vote : "Voting history is hidden since you haven't cast your vote"
+  text_tally_hidden_until_you_vote : "Voting tally is hidden until you cast your vote"
+  text_you_dont_have_shares_to_vote : "You need to have shares to weigh in on this motion."
+  text_you_are_now_a_role : "You are now a <b>#{{role_name}}</b> of"
+  text_role_description_Administrator : "As an Admin, you can bypass governance rules and directly add/remove members and workstreams.<br> Use this role sparingly as you are setting up your structures, <br>and then remove yourself from the admin role when you're ready to fully adopt the Open Enterprise governance model."
+  text_role_description_Contributor : "As a contributor, you can now earn credits and own a stake in <b>#{{enterprise}}.</b><br>Your votes on all matters will be visible to everyone, and will be non-binding."
+  text_role_description_Member : "As a member, all your votes are now binding. <br>In addition you can nominate contributors for membership,<br>and vote on Core Team elections."
+  text_role_description_Core Team : "As a member of the Core Team you have binding votes in all matters,<br>including the selection of new members.<br>Congratulations!"
+  text_role_description_Core_Team : "As a member of the Core Team you have binding votes in all matters,<br>including the selection of new members.<br>Congratulations!"
+  text_role_description_Board : "As a board member,all your votes are binding."
+  text_member_nomination : "#{{user}} is being nominated to be a member of #{{enterprise}}. As a member, all their votes would be binding. In addition they will be able to nominate contributors for membership, and vote on Core Team elections. The votes on this motion will not be visible to to #{{user}}, but they will be able to see the discussion."
+  text_core_member_nomination : "#{{user}} is being nominated for the Core Team of #{{enterprise}}. As a member of the Core Team they would have binding votes in all matters, including the selection of new members. The votes on this motion will not be visible to to #{{user}}, but they will be able to see the discussion."
+  text_core_member_removal : "This motion is to remove #{{user}} from the Core Team of #{{enterprise}}. If the motion passes #{{user}} would become a Member. As a Member, their votes will remain binding and their shares and credits would be unaffected. The votes on this motion will not be visible to to #{{user}}, but they will be able to see the discussion."
+  text_member_removal : "This motion is to remove #{{user}} as a member of #{{enterprise}}. If the motion passes #{{user}} would become a Contributor. As a Contributor, their votes will be non-binding. Their shares and credits would be unaffected. The votes on this motion will not be visible to to #{{user}}, but they will be able to see the discussion."
+  text_issue_edit_footer : "You can comment on this issue via email, by replying to this email directly."
+  text_message_edit_footer : "You can reply to this message via email, by replying to this email directly."
+  text_invitation_note_default : "Hey,\r\n\r\nWe've been using bettermeans.com to work on #{{project}}.\r\n\r\nBettermeans lets us work together as equals, and is a transparent, democratic way to get things done together. \r\n\r\nPlease accept this invitation to join us.\r\n\r\nWarm regards\r\n#{{user}}"
+  text_you_are_invited : "You are being invited to join"
+  text_generic_invitation : "This link allows anybody to get started as a <strong>contributor</strong> to this workstream."
+  text_generic_invitation_2 : "You can also use the form below to send personalized invitations for folks to join as other roles"
+  text_generic_invitation_long : "The link below allows anybody to become a contributor to this workstream.<br><br>It can be used an infinite amount of times. And doesn't expire until you change it.<br>Send it out via email, or post it somewhere where folks can follow it to join your workstream."
+  text_personal_invitation : "Use the form below to send personalized invitations to potential team members.<br><br>This is the better way to go since people are more likely to respond to an exclusive invite, and don't need to validate their email.<br><br> This is also the more secure option since each invitation can be used only once and expires after a while."
+  text_active_team_explanation : "<strong>Active Members (for this workstream)</strong><br><br>Active members are people that have been involved in this specific workstream in the past 2 weeks. <br><br> Contributors, members, and core team roles are defined at the parent(root) workstream and apply to all it's sub workstreams.<br><br>For example: if someone is a core team member of a workstream then they will have the same role for all sub workstreams. However, they might be active in some and not others."
+  text_email_updated : "Email successfully updated"
+  text_usage_over : "You have exceeded your usage for your current plan.<br> Please upgrade as soon as possible."
+  text_trial_expired : "Your trial period has expired.<br> Please update your billing info so we can start charging you."
+
+  text_role_invitation_description_Administrator : "Admins have the most power.<br><br> An Admin can bypass governance rules and directly add/remove members and workstreams, and all their votes are binding.<br><br> Use this role sparingly as you are setting up your structures. Then transition to using other roles for day to day collaboration."
+  text_role_invitation_description_Contributor : "This the first level of participation in an open enterprise.<br><br>Contributors' votes on all matters will be visible to everyone, and will be non-binding.<br><br> Meaning a contributor's voice is here, but their voting doesn't directly affect the items they are weighing in on.<br><br> A contributor can earn credits and contribute to a workstream."
+  text_role_invitation_description_Member : "Members are at the heart of an open enterprise.<br><br> All members' votes are binding.<br><br>In addition members can nominate contributors for membership, and vote on Core Team elections.<br><br> Only invite members whose principles and values are aligned with yours."
+  text_role_invitation_description_Core_Team : "A member of the Core Team has binding votes in all matters, and is very similar to a member.<br><br> The main difference is a Core Team member can vote on the election of new members.<br><br> Essentially, they are the custodians of the organization's principles, and hold the bar for membership.<br><br> Core Team Members are accountable to all members, and their role is to represent their voice."
+  text_role_invitation_description_Board : "As a board member,all your votes are binding, and you have equal priveleges to a Core Team Member.<br><br> Being on the board though, indicates a lesser commitment to being involved in day to day work."
+  text_project_locked: "This workstream is temporarily locked due to non payment."
+
+
+  default_role_administrator: Administrator
+  default_role_citizen: Core Member
+  default_role_contributor: Contributor
+  default_tracker_task: Task
+  default_tracker_subtask: Subtask
+  default_issue_status_new: New
+  default_issue_status_open: Open
+  default_issue_status_assigned: Committed
+  default_issue_status_done: Done
+  default_issue_status_closed: Closed
+  default_issue_status_blocked: Blocked
+  default_issue_status_inprogress: Committed
+  default_issue_status_canceled: Canceled
+  default_issue_status_estimate: Estimate
+  default_issue_status_archived: Archived
+  default_issue_status_accepted: Accepted
+  default_issue_status_rejected: Rejected
+  default_doc_category_public: Public documentation
+  default_doc_category_private: Private documentation
+  default_priority_low: Low
+  default_priority_normal: Normal
+  default_priority_high: High
+  default_priority_urgent: Urgent
+  default_activity_default: Misc
+  default_activity_planning: Planning
+  default_activity_execution: Execution
+  default_issue_tracker_gift: Gift
+  default_issue_tracker_expense: Expense
+  default_issue_tracker_recurring: Recurring
+  default_issue_tracker_hourly: Hourly
+  default_issue_tracker_feature: Feature
+  default_issue_tracker_bug: Bug
+  default_issue_tracker_chore: Chore
+
+  enumeration_issue_priorities: Item priorities
+  enumeration_doc_categories: Document categories
+  enumeration_activities: Activities (time tracking)
+  enumeration_system_activity: System Activity
+
+  help_reset_link : Resetting this link changes the invitation code. This deactivates the previous link(s) and prevents anybody from signing in using it.<br><br>This action does not affect the personalized invitations you sent out.
+  help_how_do_i_join_a_team : How do I join this team?
+  help_how_do_i_join_a_team_title : Joining a Team
+  help_how_do_i_join_a_team_description : "There are two levels of team membership: Contributor, and Core Team. <br /><br /><strong>Becoming a contributor</strong><br />Before getting on a core team you must first contribute to the team. </br>You become a contributor for a workstream by requesting and getting ownership of an existing tasks. <br /> Another way to become a contributor, is to be a core team member of any sub workstream.<br /><br /><strong>Become a core team member</strong><br />Once you are a contributor, you may request (or be invited) to join the Core Team by an existing Core Team member. <br /><br /> You can also join a workstream's core team directly if your a core team member of its parent workstream."
+  help_core_points_title : Core Points
+  help_core_points_description : "Core points are a way of team members endorsing each other, and signaling confidence in each other's abilities and core values. <br /><br /> When someone on a core team feels that the team is better off with someone on it they can give that person a core point. It also works the other way: If someone feels that someone is hurting the team, they can give them a negative-core point. <br /><br />When a member's total core points exceeds zero, they're invited to be on the core team. If their total falls below zero, they revert back to contributor status. <br /><br />All voting is confidential to minimize internal politics as much as possible.<br />Total core points is calculated by adding up the votes of existing core team members of a workstream and its parent."
+  help_dpp: Items in a workstream are estimated in credits.<br/><br/>Each workstream has a different scale for possible estimations. The scale varies based on the complexity/granulatiry of the type of work for that workstream.
+  help_select_scale: Items in a workstream are estimated in points.<br/><br/>Each workstream can have a different payment scale.<br/><br/>Select a scale that best covers the range of work item sizes. This changes based on the nature of work for a particular workstream.
+  help_assessment_accuracy: "Shows the accuracy with which this user was able to assess their contribution, and their team's contribution in retrospectives. <br><br>Assessment accuracy is averaged over time. More weight is given to the more recent retrospectives, and more weight is given to retrospectives with more credits.<br><br>For example: A postive self assessment accuracy score of +7 means the user tends to overrate themselves by 7 percentage points on average. <br><br> An 'other' assessment score of &plusmn 16 means the user tends have a total bias of plus or minus 16 percentage points when rating their peers. <br><br> The closer both these numbers are to zero, the more accurate the user is in their assessment of self and other. "
+  help_your_assessment: "<strong>Your assessment</strong><br>Your view of how much you and your team mates contributed to the execution of the items completed in this retrospective overall. What percentage of the work did you accomplish, compared to your team mates.During the retrospective, every team member is asked to assess everyone's contribution. Once the retrospective is complete, the assessments will be averaged out and displayed here."
+  help_team_assessment: "<strong>Team assessment</strong><br>This is the average percentage contribution the work item as assessed by your peers. Each person's self-assessment is taken out of the average and only their team mates' assessment counts towards this number."
+  help_final_assessment: "All the Team averages are used to be proportionally distributed over 100%"
+  help_confidence: "<strong>Assessment confidence</strong><br>Adjust this slider depending on how confident you are of your assessment of yourself and your peer.<br>Lower confidence, means your ratings will be given less weight, and your self assessment index will be less impact by team-self discrepancies."
+  help_accuracy: "<strong>Accuracy and Bias</strong><br>This column shows the accuracy with which users who participated in this retrospective where able to assess themselves and their peers."
+  help_item_url: "<strong>Item Permalink</strong><br>You can copy this link and use it to directly link to this item"
+  help_volunteer: "All work done on this workstream is on a volunteer basis. It will not be compensated for in money, barter, or any other monetary means.<br><br> That's not to say good karma won't come your way!<br><br>This is our small contribution to the volunteer world. Please report any abuse to abuse@bettermeans.com"
+  help_volunteer_credits: "All work done on this workstream is on a volunteer basis. It will not be compensated for in money, barter, or any other monetary means.<br><br> Credits are being used here to track user contribution, and show who did what for this workstream over time. These credits are not a promise for any rewards, or payment"
+  help_no_my_workstreams: "You haven't created any workstreams yet."
+  help_no_workstreams_i_belong_to: "You are not yet a member of any workstreams that you didn't start."
+  help_no_workstreams_active: "You have not been recently active in any workstreams."
+  help_no_workstreams: "You haven't yet gotten involved in any workstreams.<br> Create or join something to get started..."
+  help_no_workstreams_archived: "You have no archived workstreams."
+  help_activities_i_belong_to: "This activity stream shows all activity in workstreams that you own and/or belong to"
+  help_this_workstream_is_private: "This is private workstream. When a workstream is made private, all binding members (i.e. members, core team, board, and admins) are given permanent clearance to it. Also, all active contributors to the workstream are given clearance.<br><br> If you want to manage users' clearance to a private workstream, use the members tab under settings."
+
+  help_issue_tracking: "This is the essential element of the platform in that it allows you to track all work items using the dashboard and item views. However one situation in which you might turn this off is if you are creating a root workstream for your organization and you are planning on creating lots of subworkstreams where all the work and item tracking would take place. This would leave the other elements such as discussion and wiki but without the dashboard or item tracking."
+  help_news: "This module allows you to check out or report on the latest news. News is used to broadcast events to your team. For example winning a bid, or a new product release."
+  help_documents: "This module allows you to upload document to share with your team."
+  help_files: "This module allows you to upload files to share with your team."
+  help_wiki: "Wikis are great tools for collaboration and therefore we provide the option for each workstream to have a wiki. Wikis are essentially online documents and everyone that has access can not only read but also edit and improve online."
+  help_boards: "This module creates a discussion board for your workstream and like so many discussion boards before it, you can talk about stuff here. If someone has an idea that they are not yet ready to propose as a motion or work item and want to talk to folks about it, they can start a new topic. You might use the discussion board to discuss general strategy, new possible workstreams, or anything that comes to mind."
+  help_motions: "Motions are used to make large important decisions that are project-wide. This is a democratic mechanism to make decisions together. There are different types of motions, to learn more about motions <a href='http://help.bettermeans.com/motions' target='blank'>click here</a>."
+  help_credits: "Credits are a more open and democratic way of valuing work and awarding compensation. We are really excited about offering this as an option and we strongly encourage you to <a href='http://help.bettermeans.com/faq/credits' target='blank'>learn more about credits</a>."
+  help_revision_notes: "Optional: Add notes to this revision of the wiki. These notes will appear in the version history of the wiki"
+  help_mentions: "Mentions happen when someone mentions you by using the '@' symbol before your username in any comments or descriptions. <br><br>For example if somebody adds this comment to an issue:<br><strong>'I think @#{{login}} should take a look at this'</strong><br>it would appear in your mentions"
+
+
+  help_section_project_show: "<strong>Welcome to the Overview Page.</strong>  From here you can get working and invite others to join in the fun. Take a look around <br> If you want to start a new workstream and are not sure what to do next or want tips for getting started <a href= 'http://help.bettermeans.com/quickstart' target='blank'>click here.</a><br> If you are joining an existing workstream and you are unsure what you are looking at, we are here to help, <a href= 'http://help.bettermeans.com/quickstart' target='blank'>click here.</a><br>We would recommend following the links above and/or taking <a href= 'http://help.bettermeans.com' target='blank'> the tour</a> before you begin."
+  help_section_project_dashboard: "Welcome to your dashboard!|<strong>This is where the magic happens.</strong> Here you get a full view of all the work within a workstream. Each workstream and subworkstream has its own dashboard. <br><br><strong>Get started by adding a new item</strong> (click on the New Item Link at the top of the New column).<br><br>You can also <strong>offer new ideas/requests, comment, agree and disagree with ideas, prioritize, and estimate</strong>.<br><br>Click on the little key next to the New Item button for a little cheat sheet that shows the meaning of all the icons you see in the Dashboard. As you get rolling with your work, explore <strong>the filters and the search functions on the upper right corner.</strong><br><br> To learn more about voting and how it works in the dashboard <a href= 'http://help.bettermeans.com/dashboard' target='blank'> checkout our help section</a>, or this 9 minute tour of the site.<br><br><object width='560' height='340'><param name='movie' value='http://www.youtube.com/v/0wJAf229YUs?fs=1&amp;hl=en_US&amp;rel=0'></param><param name='allowFullScreen' value='true'></param><param name='allowscriptaccess' value='always'></param><embed src='http://www.youtube.com/v/0wJAf229YUs?fs=1&amp;hl=en_US&amp;rel=0' type='application/x-shockwave-flash' allowscriptaccess='always' allowfullscreen='true' width='560' height='340'></embed></object><br><br><br>"
+  help_section_project_wiki: "<strong>Wikis are great tools for collaboration and therefore each workstream has a wiki.</strong> You can start building your wiki here and you can create multiple pages by clicking <a href='wiki'>Start Page</a> (in blue to the right). Wikis are essentially online documents and everyone that has access can not only read but also edit and contribute to online. <br>Note the different action buttons (on the right in grey), these will be helpful when working on the Wiki."
+  help_section_project_news: "<strong>Check out or report on the latest news here.</strong> News is used to broadcast events to your team. For example winning a bid, or a new product release."
+  help_section_project_discussion: "Like so many discussion boards before it, you can talk about stuff here. If you have an idea that you are not yet ready to propose as a motion or work item and want to talk to folks about it, <strong>start a new topic.</strong> You might use the discussion board to discuss general strategy, new possible workstream, new target audience, or anything that comes to mind."
+  help_section_project_activity: "<strong>Stay current on what's hot in your work using the activity stream.</strong> The activity stream is a very useful way of seeing what is the latest activity in your workstreams and subworkstreams. Any updates or comments or new items or status changes to items basically when anything changes in your workstream, it will appear here. For more information, <a href= 'http://help.bettermeans.com/activity_stream' target='blank'> click here. </a>"
+  help_section_project_team: "<strong>How great is your team!</strong> Use this page to track the roles people are playing for this workstream. Remember, these roles apply to all sub workstreams as well.<br><br>You can also use the links on the right to invite more team members. <a href='http://help.bettermeans.com/invitations' target='blank'> Learn more about invitations here</a>.<br><br> There are no job titles in an Open Enterprise, but there are levels of engagement that each come with different voting privileges, <a href= 'http://help.bettermeans.com/membership' target='blank'> learn more about that here.</a><br><br> "
+  help_section_project_credits: "<strong>This page tracks all the credits for your project.</strong> Credits are a way of tracking relative contribution. They are an indicator of what peers have given each other. <br>Credits can be used in many ways depending on how your organization or project runs. They can represent actual money in which case this is an accounts payable page, or they could represent relative contribution in which case this is a contribution tracking page. To learn more about how credits can work, <a href= 'http://help.bettermeans.com/credits' target='blank'> click here.</a>"
+  help_section_my_account: "<strong>This is your account page.</strong> Unlike your public profile this page is private to you.<br><br> Here you can do important things like change your password, email settings and other preferences. You can also see your current usage levels and if needed you can change your subscription plan with BetterMeans.<br><br> If you have questions about your account, please email <a href='mailto:billing@bettermeans.com'>billing@bettermeans.com</a>"
+  help_section_welcome_index: "Welcome on board!|<strong>Get started by creating your own workstream, or browsing around and contributing to existing ones</strong><br><br>We highly recommend this overview of how things work on bettermeans:<br><br><object width='560' height='340'><param name='movie' value='http://www.youtube.com/v/0wJAf229YUs?fs=1&amp;hl=en_US&amp;rel=0'></param><param name='allowFullScreen' value='true'></param><param name='allowscriptaccess' value='always'></param><embed src='http://www.youtube.com/v/0wJAf229YUs?fs=1&amp;hl=en_US&amp;rel=0' type='application/x-shockwave-flash' allowscriptaccess='always' allowfullscreen='true' width='560' height='340'></embed></object><br><br>You can also <a href='http://help.bettermeans.com' target='blank'>visit our help site for a more info</a> and answers to frequently asked questions.<br><br>Please don't forget to send as all the feedback you have!<br><br><br>"
+  help_section_project_map: "This is the map"
+  help_section_project_settings: "Use settings sparingly. If you're admin and core team, make sure to use core team tools when possible in order for things to stay democratic."
+  help_section_motion_new: "Motions are used to make large important decisions that are project-wide. Notice the dropdown menu with the different types of motions. This is a democratic mechanism to make decisions together. To learn more about motions <a href= 'http://help.bettermeans.com/motions' >click here</a>"
+  help_section_project_new: "A Workstream is our lingo for a group or set of work.<br><br> A workstream could be a <strong>department</strong> of your organization or it could be a <strong>specific project</strong> that you are working on by your self or with others. In creating a workstreams there are a few important things to pay attention to:<br><br><ul><li> <strong>Public</strong>: A public workstream means that anyone can see your work and can comment and contribute. If you do not want to have this transparency with the community, you can uncheck this box and you are then creating a private workstream. As the creator, you control who has access, but also note that you have to pay for private workstreams. <a href= 'http://help.bettermeans.com/workstreams' target='blank'> Read more about tradeoffs. </a> </li><li> <strong>Volunteer</strong>: This is a signal to everyone working with you that all work in this workstream is fully volunteer.</li><li> <strong>Credits</strong>: Credits are a more open and democratic way of valuing work and awarding compensation. We are really excited about offering this as an option and we strongly encourage you to <a href= 'http://help.bettermeans.com/credits' target='blank'> learn more about credits. </a></li></ul> Still have questions, <a href= 'http://help.bettermeans.com/support' target='blank'> get in touch</a><br><br>"
+  help_section_invitation_new: "Use invitations to enroll team members to join your workstream.<br><br> When you send someone an invitation, they will be prompted to create a bettermeans account (if they don't have one already), and <strong>automatically added as a contributor</strong> to your workstream.<br><br>You can only invite people to a root workstream. Their membership in a workstream applies to all sub work streams as well. In other words,<strong> a person can't belong to a sub workstream, and not belong to its parent workstream.</strong><br><br> <a href='http://help.bettermeans.com/invitations' target='blank'>Learn more in our help section.</a><br><br><br>"
+  help_section_browse_workstreams: "<strong>Welcome to the BetterMeans Community.</strong> Unlike your home page, this page is the overview of the whole BetterMeans platform. You can look around at other public workstreams and comment and join other people's projects. <a href='http://help.bettermeans.com/' target='blank'>Learn more about the BetterMeans platform</a>"
+  help_section_retrospective_show: "<strong>This is a retrospective.</strong> In a retrospective compensation is awarded by your peers and your own self-assessment. This is an opportunity to be fairly compensated for your contribution. <br>You want to look at all of the completed items and then give your best assessment of what percentage you think each person contributed. You also have a chance to say how sure you are using the slider at the bottom. For more information about retrospectives, <a href='http://help.bettermeans.com/retrospectives' target='blank'>click here.</a>"
+  help_section_free: Keep your work open and inclusive, and we won't charge you a dime no matter how large you grow.

@@ -1,0 +1,27 @@
+<tr class="notification notification-retro-started" id="notification_<%= @notification.id %>">
+      <td class="gt-avatar">
+        <%= avatar_from_id(@notification.sender_id, :size => '53') %>
+      </td>
+      <td>
+  <h4>
+<%= link_to "#{l("label_retro_started")} ##{@notification.source_id}", {:controller => "retros", :action => "show", :id => @notification.source_id},{:class => "fancyframe"} %> </h4>
+<%= l(:text_retro_started_for) %>
+<strong><%= project.name %></strong>
+<%= l(:text_retro_started) %>
+<p class="gt-table-action-list">
+<%= link_to(l(:button_participate), {:controller => "retros", :action => "show", :id => @notification.source_id}, {:id =>'cr_button', :class => 'icon icon-cr-offer fancyframe', :target => "_blank"})%>
+&nbsp;
+<%= link_to_remote(l(:button_ignore), {:url => {:controller => "notifications", :action => "hide", :notification_id => @notification.id, :message => :label_ignored}}, {:id =>'cr_button', :class => 'icon icon-cr-ignore'})%>
+</p>
+    </td>
+    <td>
+      <table border="0" class="gt-table-categories">
+        <tr>
+          <td><%= link_to_user_from_id(@notification.sender_id) %></td>
+        </tr>
+        <tr>
+          <td><%= since_tag(@notification.created_at) %> ago</td>
+        </tr>
+      </table>
+    </td>
+</tr>

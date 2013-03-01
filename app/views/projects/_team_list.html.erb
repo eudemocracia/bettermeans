@@ -1,0 +1,52 @@
+<h2 class="gt-table-head icon icon-users"><%=l(:label_team)%></h2>
+
+<%
+   members = project.enterprise_members.find(:all, :include => [:roles, :user]).sort
+   %>
+
+   <%
+   if members.any?
+     %>
+   <div class="members gt-content-box">
+     <table border="0" class="gt-table gt-user-table">
+       <tbody>
+         <% members.each do |member| %>
+
+         <tr>
+           <td class="gt-avatar"><%= avatar(member.user) %></td>
+           <td><h4><%= link_to_user member.user %></h4>
+               <%= nomination_links(member,project) %>
+           </td>
+           <td>
+            <table border="0" class="gt-table-categories">
+              <tr>
+                <th>Role:</th>
+                <td><%=h member.roles.sort.collect(&:to_s).join(', ') %></td>
+              </tr>
+              <tr>
+                <th>Since:</th>
+                <td><%= since_tag(member.created_at) %> ago</td>
+              </tr>
+            </table>
+
+           </td>
+         </tr>
+         <% end %>
+         <% if User.current.allowed_to?(:send_invitations, project) && project.root? %>
+        <tr><td colspan=3 style="text-align:center">
+         <%= link_to l(:label_invitation_others), new_project_invitation_url(project) %>
+        </td></tr>
+        </li>
+        <% end %>
+
+       </tbody>
+     </table>
+   </div>
+   <div class="gt-table-buttons">
+   </div>
+
+   <% else %>
+   <div class="gt-content-box">
+   <p class="nodata"><%= l(:label_no_data) %></p>
+    </div>
+   <% end %>

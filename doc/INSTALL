@@ -1,0 +1,160 @@
+BetterMeans - Eudemocracia
+-----------
+
+Más información en http://eudemocracia.org
+
+Requisitos
+-------------
+
+* ruby 1.8.7 (2012-06-29 patchlevel 370)
+* rubygems 1.3.7
+* rails 2.3.14
+* base de datos:
+  * Postgresql 9.1 (testeado)
+  * MySQL
+  * SQLite 3
+
+> Estamos trabajando en la actualización de las versiones
+
+Comenzamos
+---------------
+
+1 - Actualizamos nuestro sistema operativo
+
+$ sudo apt-get -y update && sudo apt-get upgrade
+$ sudo apt-get dist-upgrade
+
+2 - Preferentemente instalar las herramientas de desarrollo (ToDo quitar paquetes inecesarios)
+
+$ sudo apt-get install -y curl git-core zlib1g-dev coreutils libtool bison libxt-dev automake \
+libxml2-dev libreadline-dev libmagickwand-dev libmemcached-dbg \
+postgresql postgresql-client libpq-dev libxslt1-dev nodejs \
+libqt4-dev libqtwebkit-dev libsasl2-dev libcurl4-gnutls-dev \
+memcached build-essential imagemagick libsqlite3-0 libsqlite3-dev \
+sqlite3 
+
+3 - Configurar base de datos
+
+En postgresql:
+
+update the end of /etc/postgresql/9.1/main/pg_hba.conf to look like this:
+
+"local" is for Unix domain socket connections only:
+local all all trust
+IPv4 local connections:
+host all all 127.0.0.1/32 trust
+IPv6 local connections:
+host all all ::1/128 trust
+
+then run `sudo /etc/init.d/postgresql restart
+
+4 - Configurar Gnome (si es necesario)
+
+First change some settings in Gnome Terminal. Go to Edit -> Profile Preferences -> Title and Command and check the “Run Command as login shell (opción 1 en español)”  box
+
+5 - Instalar rvm (ruby version manager)
+
+$ curl -L get.rvm.io | bash -s stable
+
+Unir a los usuarios que utilicen rvm al grupo rvm
+
+Cerrar y volver a abrir la terminal o correr `source /etc/profile.d/rvm.sh`
+
+$ type rvm | head -n 1
+
+$ rvm -v
+
+$ rvm requirements (ver si nos esta faltando alguna dependencia para instalar ruby)
+
+6 - Instalar ruby
+
+$ rvm install ruby-1.8.7-p370
+
+$ gem -v
+
+$ gem list
+
+7 - Instalar rails
+
+$ gem install rails
+
+$ rails -v
+
+8 - Clonar el repo de bettermeans
+
+$ git clone https://github.com/eudemocracia/bettermeans.git
+
+9 - Instalar las gemas
+
+$ bundle install
+
+$ gem list
+
+10 - Configurar la base de datos
+
+Configure config/database.yml en los ambientes de production y development
+
+11 - Crear las bases de datos
+
+$ rake db:create RAILS_ENV="production"
+$ rake db:create RAILS_ENV="development"
+
+12 - Crear los esquemas de base de datos
+
+$ rake db:schema:load RAILS_ENV="production"
+$ rake db:schema:load RAILS_ENV="development"
+
+13 - Session store secret
+
+$ rake config/initializers/session_store.rb
+
+14 - Cargar los datos de inicio en la base de datos
+
+$ rake db:seed RAILS_ENV="production"
+$ rake db:seed RAILS_ENV="development"
+
+15 - Controlar permisos en el directorio de instalación
+
+16 - Iniciar webserver
+
+$ ruby script/server -e production
+$ ruby script/server -e development
+
+17 - Login
+
+Abrir el navegador en http://localhost:3000 > pantalla bienvenida
+
+User: admin
+Pass: adminadmin
+
+18 - Envio de mails
+
+Confure config/email.yml
+
+$ RAILS_ENV=production script/delayed_job start
+
+19 - Instalar Apache/Passenger
+
+$ sudo apt-get install apache2-prefork-dev
+$ gem install passenger
+$ passenger-install-apache2-module 
+
+Corregir las dependencias y pegar la configuración de Pasenger al fondo del archivo apache2.conf
+
+$ sudo a2emod rewrite
+
+20 - Crear virtualhost de apache
+
+en /etc/apache2/sites-available/"tu sitio"
+
+21 - Chequear permisos de apache en el directorio de la aplicación
+
+Apache user: www-data
+
+22 - Reiniciar Passenger/Apache
+
+$ sudo /etc/init.d/apache2 restart
+
+
+That's it. Now you're ready to change the world. Here's to making a dent in things together!
+

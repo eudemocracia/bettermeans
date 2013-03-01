@@ -1,0 +1,34 @@
+  <div class="issue-meta-box first-box" id="joined_by_partial">
+      <h3 class="issue-meta-title"><%=l(:field_joined_by)%></h3>
+      <span class="issue-meta-content">
+        <span id="joined_by">
+          <% @issue.team_votes.each do |issue_vote| %>
+          <% next if issue_vote.user_id == @issue.assigned_to_id  %>
+            <%= avatar(issue_vote.user, :size => "18") %>&nbsp; &nbsp;<%= link_to_user_from_id(issue_vote.user_id) %>&nbsp;&nbsp;
+            <%= link_to_remote "remove", :url => {:controller => 'issues', :action => 'remove_team_member', :id => @issue.id, :user_id => issue_vote.user_id} if User.current.id == @issue.assigned_to_id  %>
+            <br>
+          <% end %>
+        </span>
+        <% if User.current.id == @issue.assigned_to_id %>
+          <span id="add_member_link">
+          <%= toggle_link l(:button_add_team_member), 'new-team-member-form', {:second_toggle => 'add_member_link'}%>
+          </span>
+
+          <% remote_form_for(:issue, @issue,
+                           :url => {:controller => 'issues', :action => 'add_team_member', :id => @issue.id},
+                           :method => :post,
+                           :html => {:id => 'new-team-member-form', :style => 'display: none;'}) do |f| %>
+
+           &nbsp;
+           <%= select :issue_vote, :user_id, collection_for_project_members_select %>
+           &nbsp;
+             <%= submit_tag l(:button_add), :disable_with => l(:button_working) %>
+             <p class="gt-cancel">
+           <%= toggle_link l(:button_cancel), 'new-team-member-form', {:second_toggle => 'add_member_link'}%>
+           </p>
+           </p>
+          <% end %>
+        <% end %>
+
+      </span>
+  </div>

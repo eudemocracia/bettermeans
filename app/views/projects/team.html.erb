@@ -1,0 +1,21 @@
+<%= help_section("project_team") %>
+<%= error_messages_for 'member' %>
+
+<div class="splitcontentleft">
+<%= render :partial => 'team_list', :locals => {:project => @project} %>
+</div>
+
+<div class="splitcontentright">
+  <%= render :partial => "active_member_box" %>
+</div>
+
+<% content_for :actionmenu do %>
+  <ul>
+  <% if User.current.allowed_to?(:send_invitations, @project) %>
+  <li>
+    <%= link_to l(:label_invitation_new), new_project_invitation_url(@project), :class => "icon icon-users" %>
+  </li>
+  <% end %>
+  </ul>
+<% end %>
+<% html_title(l(:label_team)) %>

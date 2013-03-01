@@ -1,0 +1,23 @@
+<% labelled_tabular_form_for :issue, @issue,
+                             :url => {:action => 'edit', :id => @issue},
+                             :html => {:id => 'issue-form',
+                                       :class => nil,
+                                       :multipart => true} do |f| %>
+    <%= error_messages_for 'issue' %>
+    <%= error_messages_for 'time_entry' %>
+    <div class="gt-content-box">
+    <% if @edit_allowed %>
+        <fieldset class="tabular">
+        <%= render :partial => 'form', :locals => {:f => f} %>
+        </fieldset>
+    <% end %>
+    </div>
+
+    <%= f.hidden_field :lock_version %>
+  <div class="gt-table-buttons">
+        <%= submit_tag l(:button_submit), :disable_with => l(:button_working) %>
+     </div>
+     <%= textile_editor_initialize(:framework => :jquery) %>
+<% end %>
+
+<div id="preview" class="wiki"></div>

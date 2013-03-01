@@ -1,0 +1,6 @@
+<!-- start header -->
+   <div class="span-12 last" id="header">
+    <% site_title = Setting.app_title %>
+    <div class="span-2" id="logo"><a href="/" title="<%= site_title %>"><%= site_title %></a></div>
+<!-- end header -->
+   </div>

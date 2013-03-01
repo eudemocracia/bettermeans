@@ -1,0 +1,60 @@
+<% content_for :sidebar do %>
+<%= project_image @project %>
+<% if !@project.is_public %>
+  <h4><%= privacy @project %>This is a private workstream <%= help_bubble :help_this_workstream_is_private %></h4>
+<% end %>
+<% if @project.volunteer? %>
+  <h4><%= volunteering @project %>This is a volunteer-run workstream<%= help_bubble :help_volunteer %></h4>
+<% end %>
+
+<div class="gt-sidebar-nav gt-sidebar-nav-blue">
+  <% if params[:with_subprojects] == 'false' %>
+  <h3>Sub Workstreams Excluded</h3>
+  <% else %>
+  <h3>Sub Workstreams Included</h3>
+  <% end %>
+
+
+  <ul>
+  <li>
+    <% if params[:with_subprojects] == 'false' %>
+    <%= link_to "Include sub workstreams", { :controller => 'projects', :action => 'credits', :with_subprojects => :true } %>
+    <% else %>
+    <%= link_to "Exclude sub workstreams", { :controller => 'projects', :action => 'credits', :with_subprojects => :false } %>
+    <% end %>
+  </li>
+  <li>
+    <%= link_to l(:label_credit_transfer), {:controller => 'credit_transfers', :action => 'index', :selected_project_id => @project.id} %>
+  </li>
+  </ul>
+</div>
+<% end %>
+
+<%= help_section("project_credits") %>
+
+  <div class="splitcontentright">
+      <%= render :partial => 'credits/credit_queue'%>
+  </div>
+  <div class="splitcontentleft">
+      <%= render :partial => 'credits/credit_history'%>
+  </div>
+
+  <% if authorize_for(:credits, :create) %>
+  <%= link_to 'New credit', new_credit_path %>
+  <% end %>
+<% content_for :sidebar do %>
+    <div>
+    <%= render :partial => 'credits/my_credits'%>
+    </div>
+    <br><br>
+    <h2 class="gt-table-head"><%=l(:label_credits_breakdown)%></h2>
+    <span id="active_credits_partial">
+    <%= render :partial => 'credits/credit_breakdown', :locals => {:group_credits => @active_credits, :title => l(:label_active_credits)}%>
+    </span>
+    <br><br>
+    <%= render :partial => 'credits/credit_breakdown', :locals => {:group_credits => @oustanding_credits, :title => l(:label_outstanding_credits)}%>
+    <br><br>
+    <%= render :partial => 'credits/credit_breakdown', :locals => {:group_credits => @total_credits, :title => l(:label_total_credits_issued)}%>
+<% end %>
+
+<% html_title(l(:label_credits)) %>

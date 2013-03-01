@@ -1,0 +1,45 @@
+<span id="my_credits_partial">
+<h2 class="gt-table-head"><%=l(:label_my_credits) %></h2>
+<div class="gt-content-box">
+  <%  @credits_by_day = @credits.group_by{|credit| credit.issued_on.to_date}
+  unit = unit_for(@project)
+
+    display_no_data = true;
+
+    if @credits_by_day.length == 0
+      display_no_data = true;
+    else %>
+
+
+  <table border="0" class="gt-table gt-user-table">
+    <tbody>
+    <%
+        @credits_by_day.sort { |b,a| a[0] <=> b[0] }
+        @credits_by_day.each do |cbd|
+    %>
+    <tr>
+        <% @date = "<th> #{cbd[0].to_s} </th>"%>
+      </tr>
+         <% cbd[1].each do |credit|
+    next if credit.owner_id != User.current.id
+      display_no_data = false;
+   %>
+   <tr class="<%= cycle 'odd', 'even' %>"id="m_<%= credit.id %>">
+     <%= @date %>
+     <td class="currency"><%=h number_to_currency credit.amount.round.to_i, :unit => unit, :separator => ".", :delimiter => ",", :precision => 0 %></td>
+      <td><%=h credit.settled_on.nil? ? credit.enabled ? "Active" : "Inactive" : "Settled" %></td>
+      <td><%= credit_activation_link(credit, @project.id, params[:with_subprojects]) %></td>
+    </tr>
+    <% @date = "<td></td>" %>
+  <% end %>
+  <% end %>
+  </tbody>
+  </table>
+  <% end %>
+
+  <% if display_no_data %>
+  <p class="nodata"><%= l(:label_no_data) %></p>
+  <% end %>
+
+</div>
+</span>

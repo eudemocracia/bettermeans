@@ -1,0 +1,31 @@
+<%= javascript_include_tag 'jit' %>
+<%= javascript_include_tag 'enterprise_map' %>
+<%= stylesheet_link_tag 'enterprise_map' %>
+
+<a href="#" onclick="refresh_data();return false;">Refresh</a>
+
+<script type="text/javascript">
+var json = <%= @project.graph_data.to_json %>;
+var json2 = <%= @project.graph_data2.to_json %>;
+
+$('document').ready(function(){
+    init();
+});
+
+</script>
+
+<div id="container">
+  <%= help_section("project_map") %>
+
+<div id="center-container">
+    <div id="infovis"></div>
+</div>
+
+<div id="inner-details"></div>
+
+</div>
+
+
+<% content_for :sidebar do %>
+<%= project_image @project %>
+<% end %>

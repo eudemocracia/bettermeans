@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title><%=h html_title %></title>
+<meta name="description" content="<%= Redmine::Info.app_name %>" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link rel="shortcut icon" href="/images/favicon.ico"  mce_href="/images/favicon.ico" />
+
+
+
+<%= stylesheet_link_tag 'reset-fonts' %>
+<%= stylesheet_link_tag 'jquery.fancybox-1.3.4' %>
+<%= stylesheet_link_tag 'jquery.tagsinput' %>
+<%= stylesheet_link_tag 'jquery-ui-1.8.8.custom' %>
+<%= stylesheet_link_tag 'gt-styles' %>
+<%= stylesheet_link_tag 'headerandfooter.css' %>
+<%= stylesheet_link_tag 'custom.css' %>
+
+<link href="/stylesheets/bubbletip.css" rel="stylesheet" type="text/css" />
+<!--[if IE]>
+<link href="/stylesheets/bubbletip-IE.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+
+
+<%= javascript_include_tag :defaults %>
+<%= javascript_include_tag  'jquery.jgrowl_minimized' %>
+<%= javascript_include_tag  'jquery.scrollTo-min' %>
+<%= javascript_include_tag  'jquery.fancybox-1.3.4.pack' %>
+<%= javascript_include_tag  'jquery.sparkline.min' %>
+<%= javascript_include_tag  'jquery.tagsinput' %>
+<%= javascript_include_tag  'store' %>
+
+
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(<%= stylesheet_path "csshover.htc" %>);}
+    </style>
+<![endif]-->
+
+<%= yield :header_tags -%>
+</head>
+
+<body>
+  <!--[if IE]>
+  <div style='border: 1px solid #F7941D; background: #FEEFDA; text-align: center; clear: both; height: 75px; position: relative;'>    <div style='position: absolute; right: 3px; top: 3px; font-family: courier new; font-weight: bold;'><a href='#' onclick='javascript:this.parentNode.parentNode.style.display="none"; return false;'><img src='/images/static/ie6nomore-cornerx.jpg' style='border: none;' alt='Close this notice'/></a></div>    <div style='width: 640px; margin: 0 auto; text-align: left; padding: 0; overflow: hidden; color: black;'>      <div style='width: 75px; float: left;'><img src='/images/static/ie6nomore-warning.jpg' alt='Warning!'/></div>      <div style='width: 275px; float: left; font-family: Arial, sans-serif;'>        <div style='font-size: 14px; font-weight: bold; margin-top: 12px;'>You are using an unsupported browser</div>        <div style='font-size: 12px; margin-top: 6px; line-height: 12px;'>For a better experience using bettermeans, please upgrade to a modern web browser.</div>      </div>      <div style='width: 75px; float: left;'><a href='http://www.firefox.com' target='_blank'><img src='/images/static/ie6nomore-firefox.jpg' style='border: none;' alt='Get Firefox 3.5'/></a></div>            <div style='width: 73px; float: left;'><a href='http://www.apple.com/safari/download/' target='_blank'><img src='/images/static/ie6nomore-safari.jpg' style='border: none;' alt='Get Safari 4'/></a></div>      <div style='float: left;'><a href='http://www.google.com/chrome' target='_blank'><img src='/images/static/ie6nomore-chrome.jpg' style='border: none;' alt='Get Google Chrome'/></a></div>    </div>  </div>
+  <![endif]-->
+
+<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+<%= javascript_tag "$(document).ready(function() {initialize();});"%>
+
+<div class="gt-hd clearfix">
+  <div class="gt-leaf-watermark clearfix">
+
+  <div class="gt-hd-top clearfix">
+
+    <div class="gt-fixed-wrap clearfix">
+
+    <div class="gt-logo">
+      <% site_title = Setting.app_title %>
+      <a href="/" class="left" title="<%= site_title %>"><%= site_title %></a>
+     <% if  User.current.logged? %>
+      <div class="gt-logo-links">
+        <%= render_project_jump_box %>
+      </div>
+     <% end %>
+    </div>
+
+    <div class="gt-util-box">
+      <div class="gt-util-box-inner">
+      <%= render :partial => "layouts/account_menu" -%>
+      </div>
+      <%= yield :buttonbar %>
+    </div>
+    </div>
+
+  </div>
+
+  <div class="gt-navbar clearfix">
+
+    <div class="gt-fixed-wrap clearfix">
+
+    <div class="gt-nav">
+      <div class="gt-nav-header">
+        <span class="gt-nav-breadcrumbs"><%= page_header_title %></span>
+        <br>
+       <h1><%= page_header_name %><%= sub_workstream_project_box(@project) %></h1>
+       <% if Setting.volunteer_only == '1' %>
+         <p>
+         <%= image_tag 'icon_volunteer.png' %>
+         only volunteer workstreams enabled on this site!<%# FIXME: i18n %>
+         </p>
+       <% end %>
+
+        <% if (!has_content?(:searchbar)) %>
+      <div class="gt-search gt-search-wide">
+              <div class="gt-search-inner">
+              <% form_tag({:controller => 'search', :action => 'index', :id => @project}, :method => :get ) do %>
+              <%= hidden_field_tag(controller.default_search_scope, 1, :id => nil) if controller.default_search_scope %>
+              <%= hidden_field_tag(:scope, 'subprojects') %>
+              <%= text_field_tag 'q', @question, :size => 20, :class => 'gt-search-text', :onfocus => "javascript:if(this.value=='Search')this.value='';", :onblur=> "javascript:if(this.value=='')this.value='Search';", :accesskey => accesskey(:quick_search) %>
+
+              <% end %>
+              </div>
+            </div>
+            <% else %>
+              <%= yield :searchbar %>
+        <% end %>
+      </div>
+      <div class="gt-nav-sub">
+      <% if @project && !@project.new_record? %>
+        <%= render_main_menu(@project) %>
+      <% else %>
+        <% if (has_content?(:mainmenu)) %>
+          <%= yield :mainmenu %>
+        <% else %>
+          <ul><li><a href="#" style="opacity:0;">.</a></li></ul>
+        <% end %>
+      <% end %>
+      <div class="gt-actionmenu">
+      <% if (has_content?(:actionmenu)) %>
+              <%= yield :actionmenu %>
+      <%   end   %>
+      <% if (has_content?(:help_section)) %>
+        <ul>
+          <li>
+            <a class="top-help-tip icon icon-help" href='' onclick="help_popup(); return false;">Tip</a>
+          </li>
+        </ul>
+      <% end %>
+      </div>
+      </div>
+
+    </div>
+
+    <% if (!has_content?(:topbuttons)) %>
+    <% else %>
+      <%= yield :topbuttons %>
+    <% end %>
+
+    </div>
+  </div>
+  <% if (has_content?(:secondnav)) %>
+    <div class="gt-second-navbar">
+    <%= yield :secondnav %>
+    </div>
+  <% end %>
+</div>
+</div>
+
+<%
+
+if (has_content?(:actionmenu) && false)
+  cssclass = has_content?(:sidebar) ?  'gt-bd gt-cols-2 clearfix' : 'gt-bd gt-cols-3 clearfix'
+elsif
+  cssclass = has_content?(:sidebar) ?  'gt-bd gt-cols clearfix' : 'gt-bd clearfix'
+end
+
+
+ %>
+<%= tag('div', {:id => 'main', :class => cssclass }, true) %>
+
+
+  <div class="gt-content" id="content">
+      <%= render_global_messages %>
+      <%= render_flash_messages %>
+      <%= yield %>
+  </div>
+
+  <% if (has_content?(:sidebar)) %>
+      <div class="gt-sidebar">
+          <%= yield :sidebar %>
+      </div>
+  <%   end   %>
+
+<div id="help_section_container" style="display:none">
+  <div class="help-section" id="help_section">
+    <%= yield :help_section  %>
+  </div>
+</div>
+</div>
+
+
+<div id="ajax-indicator" style="display:none;"><span><%= l(:label_loading) %></span></div>
+
+
+<% if (has_content?(:footer)) %>
+  <%= yield :footer %>
+<% else %>
+  <%= render :partial => '/home/footer' %>
+<% end %>
+
+
+
+
+</body>
+</html>

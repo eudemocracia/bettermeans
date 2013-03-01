@@ -1,0 +1,69 @@
+<div id="inner-page">
+  <div class="container">
+   <%= render :partial => '/home/header', :locals => {:page => 'login'} %>
+    <div class="clear span-12 last" id="main-inner">
+      <%= render_flash_messages %>
+
+
+
+<!--[if lt IE 11]>
+<div style='border: 1px solid #F7941D; background: #FEEFDA; text-align: center; clear: both; height: 75px; position: relative;'>
+  <div style='position: absolute; right: 3px; top: 3px; font-family: courier new; font-weight: bold;'><a href='#' onclick='javascript:this.parentNode.parentNode.style.display="none"; return false;'><img src='/images/static/ie6nomore-cornerx.jpg' style='border: none;' alt='Close this notice'/></a></div>
+  <div style='width: 640px; margin: 0 auto; text-align: left; padding: 0; overflow: hidden; color: black;'>
+    <div style='width: 75px; float: left;'><img src='/images/static/ie6nomore-warning.jpg' alt='Warning!'/></div>
+    <div style='width: 275px; float: left; font-family: Arial, sans-serif;'>
+      <div style='font-size: 14px; font-weight: bold; margin-top: 12px;'>You are using an unsuported browser</div>
+      <div style='font-size: 12px; margin-top: 6px; line-height: 12px;'>For a better experience using this site, please switch to a supported web browser.</div>
+    </div>
+    <div style='width: 75px; float: left;'><a href='http://www.firefox.com' target='_blank'><img src='/images/static/ie6nomore-firefox.jpg' style='border: none;' alt='Get Firefox 3.5'/></a></div>
+    <div style='width: 73px; float: left;'><a href='http://www.apple.com/safari/download/' target='_blank'><img src='/images/static/ie6nomore-safari.jpg' style='border: none;' alt='Get Safari 4'/></a></div>
+    <div style='float: left;'><a href='http://www.google.com/chrome' target='_blank'><img src='/images/static/ie6nomore-chrome.jpg' style='border: none;' alt='Get Google Chrome'/></a></div>
+  </div>
+</div>
+<![endif]-->
+
+    <div class="gt-login-hd">
+      &nbsp;&nbsp;&nbsp;&nbsp;Estamos contentos de que estés aquí
+    </div>
+
+    <div class="gt-login-box">
+        <%=RPXNow.embed_code('comunas', url_for(:controller=>:accounts, :action=>:rpx_token, :only_path => false, :protocol => login_protocol))%>
+        <br><br><br>
+        <div class="signup-header">o ingresa usando tu cuenta</div>
+
+      <p class="space">
+        <% if Setting.autologin? %>
+        <span><label for="autologin"></label>
+        </span>
+        <% end %>
+      </p>
+
+      <% form_tag({:action=> "login"}, :class => "gt-form") do %>
+        <%= back_url_hidden_field_tag %>
+        <%= hidden_field_tag 'invitation_token', @invitation_token %>
+        <div class="gt-form-row">
+          <label for="username" class="gt-login-label"><%=l(:field_login)%></label>
+          <%= text_field_tag 'username', nil, :tabindex => '1', :class => "gt-form-text" %>
+        </div>
+
+        <div class="gt-form-row">
+          <label for="password" class="gt-login-label"><%=l(:field_password)%></label>
+          <%= password_field_tag 'password', nil, :tabindex => '2', :class => "gt-form-text" %>
+        </div>
+
+        <div class="gt-form-row">
+
+          <label class="gt-remember-me"><%= check_box_tag 'autologin', 1, false, :tabindex => 4, :class => "gt-form-checkbox" %> <%= l(:label_stay_logged_in, {:class => "gt-remember-me"}) %></label>
+
+          <input type="submit" name="login" class="gt-btn-gray-medium gt-btn-right" style="float:right" value="<%=l(:button_login)%> &#187;" tabindex="5"/>
+        </div>
+
+        <p class="gt-forgot-password"><%= link_to l(:label_register), { :controller => 'account', :action => 'register' } %>
+        <span class="lost">&nbsp;|&nbsp; </span>
+        <%= link_to l(:label_password_lost), {:controller => 'account', :action => 'lost_password'} %>
+        </p>
+
+      <% end %>
+    </div>
+<%= javascript_tag "$('#username').focus();" %>
+</div></div></div>

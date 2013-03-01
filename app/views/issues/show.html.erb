@@ -1,0 +1,258 @@
+<div id="first-issue" class="issue">
+    <div class="issue-wrapper">
+
+        <div id="issue-stamp" class="issue-closed-placeholder stamp-{{state}}"></div>
+        <div class="issue-left-border-placeholder"></div>
+
+        <div class="issue-content">
+            <div class="issue-content-wrapper">
+              <span id="item_header"><h3 class="issue-title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= @issue.subject %></h3>
+                </span>
+
+                <div class="issue-body">
+                    <p>
+                      <%= textilizable @issue, :description, :attachments => @issue.attachments %>
+                    </p>
+                    <p>
+                      <div id="todo_wrapper"></div>
+                    </p>
+
+                    <p>
+                      <strong><%=l(:label_attachment_plural)%></strong>
+                      <%= link_to_attachments_table @issue %>
+                      <table id="files" class="attachments"></table>
+                      <form id="file_upload" action="<%= url_for({:controller => :attachments, :action => :create, :container_id => @issue.id, :container_type => "Issue"}) %>" method="POST" enctype="multipart/form-data">
+                          <input type="file" name="file" multiple>
+                          <button>Upload</button>
+                          <a class="icon icon-attachment" href="#">Upload files</a>
+                      </form>
+                    </p>
+
+
+                    <% if authorize_for('issue_relations', 'new') || @issue.relations.any? %>
+                    <div id="relations">
+                    <%= render :partial => 'relations' %>
+                    </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+
+        <div class="issue-meta">
+            <div class="issue-meta-wrapper">
+                <div class="issue-image-area">
+                  <% if @issue.assigned_to %>
+                  <%= avatar(@issue.assigned_to, :size => "68", :class=>"issue-author-image") %>
+                  <% else %>
+                  <%= avatar(@issue.author, :size => "68", :class=>"issue-author-image") %>
+                  <% end %>
+                  <div class="issue-image-paperclip-placeholder"></div>
+                </div>
+
+                <div class="issue-meta-box first-box">
+                    <h3 class="issue-meta-title"><%= l(:label_project) %></h3>
+                    <span class="issue-meta-content"><%= link_to(@issue.project.name, {:controller => 'projects', :action => 'show', :id => @issue.project_id}) %> - #<%= @issue.id %></span>
+                </div>
+                <div class="issue-meta-box first-box">
+                    <h3 class="issue-meta-title"><%=l(:field_tags)%></h3>
+                    <span class="issue-meta-content"><table style="width:100%" id="issue_tags_container"><tr><td><%= tags @issue, authorize_for('issues', 'edit') %></td></tr></table>
+                    </span>
+                </div>
+                <div class="issue-meta-box first-box">
+                    <h3 class="issue-meta-title"><%=l(:field_status)%></h3>
+                    <span class="issue-meta-content"><span id="issue_status"><%= @issue.status.name %></span></span>
+                </div>
+                <div class="issue-meta-box first-box">
+                    <h3 class="issue-meta-title"><%= l(:label_created_time_by, :age => time_tag(@issue.created_at)) %></h3>
+                    <span class="issue-meta-content"><span id="author">
+                      <table class="author">
+                        <tr>
+                          <td><%= avatar(@issue.author, :size => "28") %> </td>
+                          <td class="author-name"><%= link_to_user(@issue.author)%></td>
+                        </tr>
+                    </table>
+                    </span></span>
+                </div>
+                <div class="issue-meta-box first-box">
+                    <h3 class="issue-meta-title"><%=l(:field_assigned_to)%></h3>
+                    <span class="issue-meta-content"><span id="assigned_to">
+                      <table class="author">
+                        <tr>
+                          <td><%= avatar(@issue.assigned_to, :size => "28") %></td>
+                          <td class="author-name"><%= @issue.assigned_to ? link_to_user(@issue.assigned_to) : "-" %></td>
+                        </tr>
+                    </table>
+                  </span></span>
+                </div>
+                <%= render :partial => "joined_by"  %>
+                <div class="issue-meta-box last-box">
+                    <h3 class="issue-meta-title"><%=l(:field_item_url)%> <%= help_bubble :help_item_url %></h3>
+                    <span class="issue-meta-content"><%= url_for(:action => 'dashboard', :controller => 'projects', :show_issue_id => @issue.id, :only_path => false, :protocol => 'http') %></span>
+                </div>
+                <div class="issue-meta-action-wrapper">
+                  <%= render :partial => 'action_menu' %>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<% if @journals.any? %>
+<div id="comments" class="comments">
+<%= render :partial => 'history', :locals => { :journals => @journals } %>
+</div>
+<% else %>
+<div id="comments" class="comments">
+</div>
+<% end %>
+
+<div id="add-comment-area" class="comment">
+  <div id="add-comment-textarea-wrapper" class="comment-body">
+        <div><p>Comment on this item:</p></div>
+        <textarea id="add-comment-textarea" class="comment-body-wrapper autocomplete-mentions"></textarea>
+        <div class="comment-form-wrapper">
+            <a class="fakebutton" href="#" onclick="post_comment(); return false;">Comment</a>
+        </div>
+    </div>
+</div>
+
+<% if authorize_for('issues', 'edit') %>
+  <div id="update" style="display:none;">
+  <h3><%= l(:button_update) %></h3>
+  <%= render :partial => 'edit' %>
+  </div>
+<% end %>
+
+
+<% html_title "##{@issue.id}: #{@issue.subject}" %>
+
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'scm' %>
+<% end %>
+
+
+<div id='flyovers' style="display:none;">
+
+  <% if !params[:update].nil? %>
+    <%= javascript_tag 'showAndScrollTo("update", "attachments_1_file");' %>
+  <% end %>
+
+<%= render :partial => 'projects/dashboard_javascript_variables', :locals => {:project => @project} %>
+
+<script type="text/javascript">
+
+  projectId = <%= @project.id %>;
+
+  $('document').ready(function(){
+    highest_pri = <%= @project.highest_pri %>
+    show_item(<%= @issue.startable? %>);
+    initialize();
+
+    $('.issue-tags').tagsInput({
+       'autocomplete_url': '/projects/<%= @issue.project.id %>/all_tags',
+       'autocomplete':{selectFirst:true,width:'100px',autoFill:true},
+       'issue_id':'<%= @issue.id %>',
+       'height':'20px',
+       'width':$('#issue_tags_container').width(),
+       'defaultText':'add a tag'
+    });
+
+    $('#file_upload').fileUploadUI({
+        uploadTable: $('#files'),
+        downloadTable: $('#files'),
+        buildUploadRow: function (files, index) {
+            return $('<tr><td>' + files[index].name + '<\/td>' +
+                    '<td class="file_upload_progress"><div><\/div><\/td>' +
+                    '<td class="file_upload_cancel">' +
+                    '<button class="ui-state-default ui-corner-all" title="Cancel">' +
+                    '<span class="ui-icon ui-icon-cancel">Cancel<\/span>' +
+                    '<\/button><\/td><\/tr>');
+        },
+        buildDownloadRow: function (attachment) {
+            return $('<tr><td><a class="icon icon-attachment" href="/attachments/' + attachment.id + '/' + attachment.filename + '">' + attachment.filename + '</a> (' + attachment.filesize + ' Bytes)<\/td><\/tr>');
+        }
+    });
+  });
+
+  function generate_comment(text){
+    var html = '';
+    html = html +  '      <div class="comment" id="change-new">';
+    html = html +  '          <div class="comment-body">';
+    html = html +  '              <div class="comment-body-wrapper">';
+    html = html +  '                  <div class="comment-accessory-shadow"></div>';
+    html = html +  '                  <div class="comment-accessory"></div>';
+    html = html +  '                    <div id="journal-new-notes" class="wiki editable gravatar-margin"> ';
+    html = html +  '                        <div class="contextual hidden" id="new_comment_edit">';
+    html = html +  '<a title="Edit" class="icon icon-edit icon-edit-new" id="new_comment_edit_link" href="#">Edit</a>';
+    html = html +  '                            </div> ';
+    html = html +                          '<p>' + h(text).replace(/\r\n/g,"<br>").replace(/\n/g,"<br>") + '</p>';
+    html = html +  '                    </div> ';
+    html = html +  '              </div>';
+    html = html +  '          </div>';
+    html = html +  '          <div class="comment-meta">';
+    html = html +  '              <div class="comment-meta-wrapper">';
+    html = html +  '                  <div class="comment-author-image"><%= avatar(User.current, :size => "28", :class => "none") %></div>';
+    html = html +  '                  <div class="comment-meta-meta">';
+    html = html +  '                      <div class="comment-author"><%= link_to_user User.current %></div>';
+    html = html +  '                      <div class="comment-date">Just now</div>';
+    html = html +  '                  </div>';
+    html = html +  '              </div>';
+    html = html +  '          </div>';
+    html = html +  '      </div>';
+    return html;
+  }
+
+  function post_comment(){
+      var text = $("#add-comment-textarea").val();
+
+      if ((text == null) || (text.length < 2)){
+        return false;
+      }
+      else
+      {
+        $("#comments").append(generate_comment(text));
+        $("#add-comment-textarea").val('');
+
+        var data = "commit=Create&issue_id=<%= @issue.id %>&comment=" + encodeURIComponent(text);
+
+        var url = url_for({ controller: 'comments',
+                                 action    : 'create'
+                                });
+
+        $.ajax({
+           type: "POST",
+           dataType: "json",
+           url: url,
+           data: data,
+           success:   function(issue){
+             $('.icon-edit').hide();
+             $('.icon-edit-new').show();
+             $('#new_comment_edit').show();
+             var new_journal_id = issue.journals[issue.journals.length-1].id
+             var onclick = "$.ajax({type: 'GET', url: '/journals/edit/" + new_journal_id + "'});return false;";
+             $("#journal-new-notes").attr('id','journal-' + new_journal_id + '-notes'); //updated id
+              $('#new_comment_edit_link').attr('onclick',onclick);
+          },
+          timeout: 30000 //30 seconds
+         });
+
+        return false;
+      }
+  }
+
+  function show_item(startable){
+    timer_active = false;
+    D = [];
+    D.push(item);
+    $("#item_header").html(generate_item_lightbox(0));
+    $("#todo_wrapper").replaceWith(generate_todo_section_lightbox(0));
+    if (startable){
+      $("#item_content_buttons_start_button_0").show();
+    }
+
+  }
+
+
+
+</script>

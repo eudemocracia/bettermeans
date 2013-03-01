@@ -1,0 +1,16 @@
+/*
+Template:  GT-502
+File:    custom.css - Use this file to add any custom styles you need
+
+If you add styles to this template, be sure to include it in your template files.
+*/
+
+/* header background 39px height */
+#inner-page, .gt-hd-top {
+   background: url('/images/static/inner-background.jpg') repeat-x;
+}
+	
+/* site logo 148x30 */
+#logo a,.gt-hd .gt-logo {
+   background: url('/images/static/header_logo.png') no-repeat;
+}

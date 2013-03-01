@@ -1,0 +1,10 @@
+<a class="icon icon-help" href="http://help.bettermeans.com" target="blank">help</a><%# FIXME: i18n %>
+<span class="gt-util-separator">|</span>
+<% if User.current.logged? %>
+<%= render :partial => "notifications/unresponded" %>
+  <%= link_to_user(User.current, :format => :username) %>
+  <span class="gt-util-separator">|</span>
+  <%= link_to "sign out", :signout %>
+<% else %>
+  <%= link_to :login, :signin%>
+<% end %>

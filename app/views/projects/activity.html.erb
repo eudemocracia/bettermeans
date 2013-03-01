@@ -1,0 +1,38 @@
+<% @page_header_name = l(:label_browse_activity) %>
+<%= help_section("project_activity") %>
+
+<h2 class="gt-table-head"><%= @author.nil? ? "" : l(:label_user_activity, link_to_user(@author)) %><div class="spark right spark-top" max="<%= @project.activity_line_max if @project %>"><%= @project.activity_line_show(60) if @project %></div></h2>
+<div class="gt-content-box">
+<%= render :partial => 'activity_streams/activity_stream_list', :locals => {
+  :user_id => params[:user_id],
+  :project_id => @project ? @project.id : nil,
+  :with_subprojects => params[:with_subprojects],
+  :limit => 50,
+  :max_created_at => nil
+  }
+%>
+</div>
+
+<% content_for :actionmenu do %>
+    <ul>
+    <li>
+      <%= link_to l(:label_project_new), {:controller => 'projects', :action => 'add', :parent_id => @project}, :class => "icon icon-add" %>
+    </li>
+    </ul>
+    <ul>
+    <li>
+      <%= link_to l(:label_browse_workstreams), {:controller => 'projects', :action => 'index'}, :class => "icon icon-projects" %>
+    </li>
+    </ul>
+<% end %>
+
+
+<% content_for :sidebar do %>
+<% end %>
+<% html_title(l(:label_activity), @author) -%>
+
+<script>
+  $('document').ready(function(){
+    display_sparks();
+  });
+</script>

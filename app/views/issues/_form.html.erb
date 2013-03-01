@@ -1,0 +1,25 @@
+<div id="issue_descr_fields">
+<p>
+<% if @project.credits_enabled? %>
+<%= f.select :tracker_id, Tracker.all.collect {|t| [t.name, t.id]}, :required => true %>
+<% else %>
+<%= f.select :tracker_id, Tracker.no_credits.collect {|t| [t.name, t.id]}, :required => true %>
+<% end %>
+
+</p>
+<%= observe_field :issue_tracker_id, :url => { :action => :update_form, :project_id => @project, :id => @issue },
+                                     :update => :attributes,
+                                     :with => "$('#issue-form').serialize()" %>
+
+<p><%= f.text_field :subject, :size => 80, :required => true %></p>
+<p><%= f.textile_editor :description,
+                   :cols => 60,
+                   :rows => (@issue.description.blank? ? 10 : [[10, @issue.description.length / 50].max, 100].min),
+                   :accesskey => accesskey(:edit),
+                   :id => "issue_description",
+                   :class => 'wiki-edit autocomplete-mentions' %></p>
+</div>
+
+<script type="text/javascript">
+projectId = <%= @project.id %>;
+</script>

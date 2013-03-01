@@ -1,0 +1,20 @@
+  <h2 class="gt-table-head"><%=l(:label_new_credit_transfer) %></h2>
+  <% form_tag({:action => :create}) do %>
+  <% if project_list %>
+  <label><%= l(:label_select_project) %></label>
+  <%= collection_select(:credit_transfer, :project_id, project_list, :project_id, :name,{:prompt => l(:label_select), :selected => @selected_project_id.to_i}) %>
+  <% else %>
+  <div class="gt-content-box">
+    <%= content_tag 'p', l(:label_no_credits), :class => "nodata" %>
+  </div>
+  <% end %>
+
+  <div id="users_container">
+    <% if @selected_project_id %>
+      <%= render :partial => "eligible_recipients" %>
+    <% end %>
+  </div>
+
+  <%= observe_field :credit_transfer_project_id, :url => {:controller => :credit_transfers, :action => :eligible_recipients, :only_path => :false }, :update => :users_container, :with => 'project_id' %>
+
+  <% end %>

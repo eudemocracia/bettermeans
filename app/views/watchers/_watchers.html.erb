@@ -1,0 +1,37 @@
+<p><strong><%= l(:label_issue_watchers) %></strong></p>
+<%= watchers_list(watched) %>
+
+<% unless @watcher.nil? %>
+<% remote_form_for(:watcher, @watcher,
+                   :url => {:controller => 'watchers',
+                            :action => 'new',
+                            :object_type => watched.class.name.underscore,
+                            :object_id => watched},
+                   :method => :post,
+                   :html => {:id => 'new-watcher-form'}) do |f| %>
+<p><%= f.select :user_id, (watched.addable_watcher_users.collect {|m| [m.name, m.id]}), :prompt => true %>
+
+<div class="gt-table-buttons">
+<%= submit_tag l(:button_add), :disable_with => l(:button_working) %>
+<p class="gt-cancel">
+<%= toggle_link l(:button_cancel), 'new-watcher-form'%></p>
+</div></p>
+<% end %>
+<% end %>
+
+
+<% content_for :sidebar do %>
+  <div class="gt-sidebar-nav gt-sidebar-nav-gray">
+    <ul>
+      <li>
+        <%= link_to_remote l(:button_add),
+                           :url => {:controller => 'watchers',
+                                    :action => 'new',
+                                    :object_type => watched.class.name.underscore,
+                                    :object_id => watched} if User.current.allowed_to?(:add_issue_watchers, @project) %>
+      </li>
+      <li>
+      </li>
+    </ul>
+  </div>
+<% end %>
