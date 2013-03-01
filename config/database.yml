@@ -1,0 +1,46 @@
+production:
+  adapter: postgresql
+  database: bettermeans_prod
+  host: localhost
+  username: xxxxxxxxxx
+  password: xxxxxxxxx
+  encoding: utf8
+
+development:
+  adapter: postgresql
+  database: bettermeans_dev
+  host: localhost
+  min_messages: WARNING
+  username: xxxxxxxx
+  password: xxxxxxxx
+
+test: &TEST
+  adapter: postgresql
+  database: bettermeans_test
+  host: localhost
+  min_messages: WARNING
+  username: postgres
+  password: postgres
+
+test_pgsql:
+  adapter: postgresql
+  database: bettermeans_test
+  host: localhost
+  min_messages: WARNING
+  username: postgres
+  password: postgres
+
+test_sqlite3:
+  adapter: sqlite3
+  dbfile: db/test.db
+
+demo:
+  adapter: sqlite3
+  dbfile: db/demo.db
+
+
+cucumber:
+  <<: *TEST
+
+selenium:
+  <<: *TEST
