@@ -3,19 +3,19 @@
    <%= render :partial => 'header', :locals => {:page => 'what'} %>
     <div class="clear span-12 last" id="main-inner">
       <div>
-      <h1>Get things done together efficiently</h1>
+      <h1>Hagamos las cosas eficientemente y trabajando juntos</h1>
       <span class="span-12 left whitebox">
         <span class="span-6 left colborder">
-          <h2>Home Screen and Workstreams</h2>
-          <p>The home screen of your project is the first page you will see. It shows an overview of your team’s work with:
+          <h2>Inicio y los Flujos de Trabajo</h2>
+          <p>La pantalla de inicio de tu proyecto es la primera página que verás. Muestra un resumen del trabajo de tu equipo con repecto a:
           </p>
           <ul>
-            <li>Lastest Activity </li>
-            <li>Workstreams </li>
-            <li>Lastest News </li>
-            <li>Team Members </li>
-            <li>Quicklinks </li>
-            <li>Work Breakdown </li>
+            <li>Actividad más Reciente </li>
+            <li>Flujos de trabajo </li>
+            <li>Noticias más Recientes </li>
+            <li>Miembros del Equipo </li>
+            <li>Accesos Directos </li>
+            <li>Tareas </li>
           </ul>
         </span>
         <span class="span-6 left last">
@@ -24,7 +24,7 @@
           <img src="/images/static/tutorialvideo.jpg" />
           </a>
           </span>
-          <blockquote>The significant problems we have cannot be solved at the same level of thinking with which we created them<author>Albert Einstein</author></blockquote>
+          <blockquote>Los problemas significantes que tenemos no pueden ser resueltos en el mismo nivel de pensamiento con que los hemos creado.<author>Albert Einstein</author></blockquote>
 
         </span>
 
@@ -36,19 +36,19 @@
             <span class="span-12 left whitebox">
               <span class="span-6 left colborder">
                 <h2>Dashboard</h2>
-                <p>The dashboard provides a full view of all the items in a workstream.
-                From the dashboard you can:
+                <p>El dashboard provee una vista completa de las tareas de un flujo de trabajo.
+                Desde el Dashboard podes:
                 </p>
                 <ul>
-                  <li>Propose new ideas </li>
-                  <li>Comment on other people's ideas </li>
-                  <li>Vote for or against ideas </li>
-                  <li>Prioritize important work </li>
-                  <li>Estimate complexity/cost </li>
-                  <li>Manage a Todo list for each item </li>
-                  <li>Start or join teams </li>
-                  <li>Report on finished items </li>
-                  <li>Accept or reject other's work </li>
+                  <li>Proponer nuevas ideas </li>
+                  <li>Comentar las ideas de otros </li>
+                  <li>Votar a favor o en contra de ideas </li>
+                  <li>Priorizar trabajo importante </li>
+                  <li>Estimar complejidad y costo </li>
+                  <li>Administrar las cosas a realizar por cada tarea </li>
+                  <li>Comenzar o unirte a un equipo </li>
+                  <li>nformar las tareas terminadas </li>
+                  <li>Aceptar o rechazar el trabajo de otros </li>
                 </ul>
               </span>
               <span class="span-6 left last">
@@ -62,16 +62,15 @@
       </div>
       <div class="paint">
         <p>
-        learn about <br><a href="/front/how.html">how an open enterprise works</a></p>
+        aprende <br><a href="/front/how.html">como una organización abierta trabaja</a></p>
       </div>
       <div>
             <h1></h1>
             <span class="span-12 left whitebox">
               <span class="span-6 left colborder">
-                <h2>Lightbox</h2>
-                <p>The lightbox allows you to view all the specifics of an item without navigating away from the page you are on. <br>
-                A lightbox opens from the activity page or the dashboard, allowing you to do everything that you do in the dashboard (listed above) but with more information.
-                </p>
+                <h2>Detalle de Tareas</h2>
+                <p>El detalle de tareas te permite mirar todo lo específico a una tarea sin necesidad de dejar la página donde estás navegando.<br>
+                Los detalles de la tarea se abren desde el sumario o desde el dashboard permitiendote realizar las mismas acciones que desde el dashboard pero con toda la información.</p>
               </span>
               <span class="span-6 left last">
                 <span class="viewport">
@@ -86,14 +85,15 @@
             <h1></h1>
             <span class="span-12 left whitebox">
               <span class="span-6 left colborder">
-                <h2>Activity</h2>
-                <p>The activity is a news feed of all of the activity for that workstream.<br>
-                From the activity page you can
+                <h2>Sumario</h2>
+                <p>El sumario es una fuente de noticias de toda la actividad para determinado flujo de trabajo.
+<br>
+                Desde la página sumario podes:
                 </p>
                 <ul>
-                  <li>See the latest buzz, comments, and discussions</li>
-                  <li>Comment on items</li>
-                  <li>Open any item in a lightbox and take action</li>
+                  <li>Ver los más recientes comentarios y discusiones</li>
+                  <li>Comentar en tareas</li>
+                  <li>Abrir el detalle de cualquier tarea y tomar acción</li>
                 </ul>
                 </span>
 
@@ -110,12 +110,12 @@
           <div>
             <span class="span-12 left whitebox">
               <span class="span-6 left colborder">
-                <h2>Item Estimation</h2>
-                <p>Work items' complexity can be collectively estimated via the dashboard.<br>Here's how it works:
+                <h2>Estimación de Tareas</h2>
+                <p>La complejidad de las tareas puede ser colectivamente estimada a través del dashboard.<br>Así es como funciona:
                 </p>
-                <p>Members of a team who choose to, can estimate the item's complexity on a scale from one to six. The assessment of all members with a binding vote is averaged. Non-binding assessments are logged but don't affect the final complexity of an item.</p>
-                <p>Depending on how complex an item has been estimated, it needs fewer or more votes to move from one state to another. <strong>This allows big-item decisions to move slower, giving more people a chance to weigh in on it, while small-item decisions can move quickly without being blocked.</strong></p>
-                <p>Knowing an item's complexity also better informs the team to properly prioritize it. </p>
+                <p>Los miembros de un equipo pueden estimar la complejidad de la tarea en una escala de uno a seis. La evaluación de todos los miembros es promediada a través de una votación vinculante. Las evaluaciones no vinculantes son registradas pero no afectan la complejidad final de una tarea.</p>
+                <p>Dependiendo de cuan complejamente una tarea ha sido estimada, necesita menos o mas votos para ir de un nivel a otro. <strong>Esto permite que las decisiones sobre tareas importantes se den más lentamente, dándole a más gente la oportunidad de tener peso en su elección, mientras que las decisiones de tareas menos importantes pueden ir más rápido sin ser limitadas inecesariamente.</strong></p>
+                <p>Conocer la complejidad de un item también informa mejor al equipo de la necesidad de priorizarlo.</p>
               </span>
               <span class="span-6 left last">
                 <span class="viewport">
@@ -123,7 +123,7 @@
                 <img src="/images/static/estimation_video.png" />
                 </a>
                 </span>
-                <blockquote>We have created trouble for ourselves in organizations by confusing control with order<author>Margarate J. Wheatley</author></blockquote>
+                <blockquote>Nos hemos creado problemas en las organizaciones confundiendo el control con el orden.<author>Margarate J. Wheatley</author></blockquote>
 
 
             </span>
@@ -133,14 +133,14 @@
           <h1></h1>
           <span class="span-12 left whitebox">
             <span class="span-6 left colborder">
-              <h2>Motions</h2>
-              <p>Motions are a way to make big organizational decisions together. They can be used for thinks like</p>
+              <h2>Mociones</h2>
+              <p>Las mociones son una manera de realizar grandes decisiones organizacionales juntos. Pueden utilizarse para cosas como:</p>
               <ul>
-                <li>Nominating a new member</li>
-                <li>Nominating a core team member</li>
-                <li>Revised mission statement</li>
-                <li>New strategic direction</li>
-                <li>New hourly work type</li>
+                <li>Nominar un nuevo miembro</li>
+                <li>Nominar a un miembro del equipo central</li>
+                <li>Revisar la declaración de la misión</li>
+                <li>Nueva dirección estratégica</li>
+                <li>Nuevo tipo de trabajo por horas</li>
               </ul>
               </p>
             </span>
@@ -158,14 +158,14 @@
           <h1></h1>
           <span class="span-12 left whitebox">
             <span class="span-6 left colborder">
-              <h2>Discussion Boards</h2>
-              <p>If you have an idea that you are not yet ready to propose and want to talk to folks about it, start a discussion.</p>
-              <p>Topics you might discuss:</p>
+              <h2>Debates</h2>
+              <p>Si tienes una idea que no estás listo para proponer y querés hablar con tus amigos al respecto, comienza un debate.</p>
+              <p>Algunos temas que se podrían debatir:</p>
               <ul>
-                <li>General strategy</li>
-                <li>New possible workstreams</li>
-                <li>New target audience</li>
-                <li>Anything else that comes to mind...</li>
+                <li>Estrategia general</li>
+                <li>Nuevos flujos de trabajo posibles</li>
+                <li>Nuevo público target</li>
+                <li>Cualquier otra cosa que se te ocurra</li>
               </ul>
             </span>
             <span class="span-6 left last">
@@ -182,17 +182,17 @@
           <span class="span-12 left whitebox">
             <span class="span-6 left colborder">
               <h2>Wiki</h2>
-              <p>Yup, we have wikis too. </p>
-              <p>A wiki is a tool that allows the easy creation and collaboration of any number of interlinked documents.</p>
-              <p>You can create a document and collect information together. Edit and work with each other to build knowledge and move forward. </p>
+              <p>Si, tenemos wikis también. </p>
+              <p>Una wiki es una herramienta que permite la fácil creación y colaboración de cualquier número de documentos compartidos.</p>
+              <p>Puedes crear un documento e incorporar información en conjunto. Editar y trabajar con otros para construir conocimiento y avanzar. </p>
             </span>
             <span class="span-6 left last">
-              <h2>Document Storage</h2>
-              <p>You have the ability to:</p>
+              <h2>Archivo de Documentos</h2>
+              <p>Tienes la posibilidad de:</p>
               <ul>
-                <li>Attach documents to a specific work item</li>
-                <li>Gather documents within a workstream</li>
-                <li>Store documents at the root workstream level</li>
+                <li>Adjuntar documentos a una tarea específica</li>
+                <li>Adjuntar documentos dentro de un flujo de trabajo</li>
+                <li>Almacenar documentos en la base del flujo de trabajo.</li>
               </ul>
               
             </span>
@@ -204,25 +204,24 @@
           <h1></h1>
           <span class="span-12 left whitebox">
             <span class="span-6 left colborder">
-              <h2>Data Security &amp; Backup</h2>
-              <p>We treat your data royally. Its religiously backed up to Amazon’s weapons-grade data centers. Don’t worry.</p>
-              <p>All traffic to and from our servers is encrypted using 128-bit SSL (that’s geek-speak for really really safe).</p>
-              <p>We've got you covered.</p>
+              <h2>Seguridad de la Información &amp; Backup</h2>
+              <p>Los backups son un tema importante y están en proceso de implementación.</p>
+              <p>Todo el tráfico de y hacia nuestros servidores está encriptado utilizando SSL de 128-bit.</p>
               <span style="margin-left:160px">
               <img src="/images/static/lock.jpg"/>
               </span>
 
             </span>
             <span class="span-6 left last">
-              <h2>Browser Compatibility</h2>
+              <h2>Compatiblidad con Navegadores</h2>
               <span style="margin-left:60px">
               <img src="/images/static/browsers_no_ie.jpg"/>
               </span>
-              <p>Currently BetterMeans.com is compatible with the following browsers:</p>
+              <p>Actualmente Bettermeans-Eudemocracia es compatible con los siguientes navegadores:</p>
               <ul>
-                  <li>Firefox 3 and higher</li>
-                  <li>Safari 4 and higher</li>
-                  <li>Chrome 4</li>
+                  <li>Firefox 3 o superior</li>
+                  <li>Safari 4 o superior</li>
+                  <li>Chrome 4 o superior</li>
               </ul>
 
             </span>

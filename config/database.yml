@@ -2,8 +2,8 @@ production:
   adapter: postgresql
   database: bettermeans_prod
   host: localhost
-  username: xxxxxxxxxx
-  password: xxxxxxxxx
+  username: bettermeans
+  password: ..bettermeans
   encoding: utf8
 
 development:
@@ -11,8 +11,8 @@ development:
   database: bettermeans_dev
   host: localhost
   min_messages: WARNING
-  username: xxxxxxxx
-  password: xxxxxxxx
+  username: bettermeans
+  password: ..bettermeans
 
 test: &TEST
   adapter: postgresql
