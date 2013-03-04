@@ -1,5 +1,5 @@
-/config/email.yml
-/config/database.yml
+#/config/email.yml
+#/config/database.yml
 /log/*
 /tmp/*
 /config/initializers/session_store.rb

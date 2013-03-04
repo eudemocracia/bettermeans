@@ -7,8 +7,8 @@ production:
    port: 25
    domain: ejecutivo.comunas.org.ar
    authentication: :login
-   user_name: "eudemocracia" 
-   password: "..democraciadirecta"
+   user_name: "xxxxxx" 
+   password: "xxxxxxx"
 
 development:
   delivery_method: :smtp
