@@ -8,7 +8,7 @@ production:
    domain: ejecutivo.comunas.org.ar
    authentication: :login
    user_name: "eudemocracia" 
-   password: "democraciadirecta"
+   password: "..democraciadirecta"
 
 development:
   delivery_method: :smtp
