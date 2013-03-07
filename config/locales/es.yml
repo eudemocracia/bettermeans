@@ -1297,37 +1297,68 @@ Saludos cordiales,
   
   default_role_administrator: Administrador
   default_role_citizen: Miembro Directivo
-  default_role_contributor: Contribuyente
+  default_role_contributor: Colaborador
   default_tracker_task: Tarea
   default_tracker_subtask: Subtarea
-  default_issue_status_new: Nueva
-  default_issue_status_open: Abierta
+  
+  #default_issue_status_new: Nueva
+  #default_issue_status_open: Abierta
+  #default_issue_status_assigned: Committed
+  #default_issue_status_done: Realizada
+  #default_issue_status_closed: Cerrada
+  #default_issue_status_blocked: Bloqueada
+  #default_issue_status_inprogress: En Progreso
+  #default_issue_status_canceled: Cancelada
+  #default_issue_status_estimate: Estimada
+  #default_issue_status_archived: Archivada
+  #default_issue_status_accepted: Aceptada
+  #default_issue_status_rejected: Rechazada
+  #default_doc_category_public: Documentación Pública
+  #default_doc_category_private: Documentación Privada
+  #default_priority_low: Baja
+  #default_priority_normal: Normal
+  #default_priority_high: Alta
+  #default_priority_urgent: Urgente
+  #default_activity_default: Misc
+  #default_activity_planning: Planeando
+  #default_activity_execution: Ejecutando
+  #default_issue_tracker_gift: Regalo
+  #default_issue_tracker_expense: Gasto
+  #default_issue_tracker_recurring: Recurrente
+  #default_issue_tracker_hourly: Horario
+  #default_issue_tracker_feature: Característica
+  #default_issue_tracker_bug: Error
+  #default_issue_tracker_chore: Rutina
+
+ 
+  default_issue_status_new: New
+  default_issue_status_open: Open
   default_issue_status_assigned: Committed
-  default_issue_status_done: Realizada
-  default_issue_status_closed: Cerrada
-  default_issue_status_blocked: Bloqueada
-  default_issue_status_inprogress: En Progreso
-  default_issue_status_canceled: Cancelada
-  default_issue_status_estimate: Estimada
-  default_issue_status_archived: Archivada
-  default_issue_status_accepted: Aceptada
-  default_issue_status_rejected: Rechazada
-  default_doc_category_public: Documentación Pública
-  default_doc_category_private: Documentación Privada
-  default_priority_low: Baja
+  default_issue_status_done: Done
+  default_issue_status_closed: Closed
+  default_issue_status_blocked: Blocked
+  default_issue_status_inprogress: Committed
+  default_issue_status_canceled: Canceled
+  default_issue_status_estimate: Estimate
+  default_issue_status_archived: Archived
+  default_issue_status_accepted: Accepted
+  default_issue_status_rejected: Rejected
+  default_doc_category_public: Public documentation
+  default_doc_category_private: Private documentation
+  default_priority_low: Low
   default_priority_normal: Normal
-  default_priority_high: Alta
-  default_priority_urgent: Urgente
+  default_priority_high: High
+  default_priority_urgent: Urgent
   default_activity_default: Misc
-  default_activity_planning: Planeando
-  default_activity_execution: Ejecutando
-  default_issue_tracker_gift: Regalo
-  default_issue_tracker_expense: Gasto
-  default_issue_tracker_recurring: Recurrente
-  default_issue_tracker_hourly: Horario
-  default_issue_tracker_feature: Característica
-  default_issue_tracker_bug: Error
-  default_issue_tracker_chore: Rutina
+  default_activity_planning: Planning
+  default_activity_execution: Execution
+  default_issue_tracker_gift: Gift
+  default_issue_tracker_expense: Expense
+  default_issue_tracker_recurring: Recurring
+  default_issue_tracker_hourly: Hourly
+  default_issue_tracker_feature: Feature
+  default_issue_tracker_bug: Bug
+  default_issue_tracker_chore: Chore
 
   enumeration_issue_priorities: Prioridad de Tareas
   enumeration_doc_categories: Categorías del Documento
